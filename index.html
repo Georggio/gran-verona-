@@ -608,24 +608,51 @@ function parseConfig(rows) {
 }
 
 // Parse floor sheet: col A = area, col B = rubro, col C = item, col D = estado, col E = obs
+// Handles: decorative title rows, merged cells (area/rubro propagated downward)
 function parseFloor(rows) {
   const areas = {};
-  const headers = rows[0] || [];
-  for (let i = 1; i < rows.length; i++) {
+
+  // Find the actual data start: look for the row that has "Estado" or "Área" in any cell
+  // Data rows are those where col C (item) is non-empty
+  // Skip decorative rows (title, instructions, headers)
+  const STATE_KEYWORDS = ['comenzar', 'ejecuci', 'parcial', 'finalizado', 'aprobado'];
+  function isStateValue(v) {
+    const lv = (v||'').toLowerCase();
+    return STATE_KEYWORDS.some(k => lv.includes(k)) || /^[0-3]$/.test(v.trim());
+  }
+
+  // Find first data row: has a state value in col D (index 3)
+  let dataStart = -1;
+  for (let i = 0; i < rows.length; i++) {
+    if (isStateValue(rows[i][3] || '')) { dataStart = i; break; }
+  }
+  if (dataStart === -1) return areas; // no data found
+
+  let currentArea = '';
+  let currentRubro = '';
+
+  for (let i = dataStart; i < rows.length; i++) {
     const row = rows[i];
-    const area = (row[0] || '').trim();
-    const rubro = (row[1] || '').trim();
+    const areaCell = (row[0] || '').trim();
+    const rubroCell = (row[1] || '').trim();
     const item = (row[2] || '').trim();
     const estadoRaw = (row[3] || '').trim();
     const obs = (row[4] || '').trim();
+
+    // Propagate area and rubro downward (merged cells come as empty)
+    if (areaCell) currentArea = areaCell;
+    if (rubroCell) currentRubro = rubroCell;
+
+    const area = currentArea;
+    const rubro = currentRubro;
     if (!area || !item) continue;
     
-    // Parse estado
+    // Parse estado — matches exact dropdown values from the sheet
     let estado = 0;
     const el = estadoRaw.toLowerCase();
-    if (el.includes('finalizado') && el.includes('aprobado') || el === '3') estado = 3;
-    else if (el.includes('parcial') || el === '2') estado = 2;
-    else if (el.includes('ejecuci') || el === '1') estado = 1;
+    if (el === '3' || (el.includes('finalizado') && el.includes('aprobado'))) estado = 3;
+    else if (el === '2' || el.includes('parcial')) estado = 2;
+    else if (el === '1' || el.includes('ejecuci')) estado = 1;
     else estado = 0;
     
     if (!areas[area]) areas[area] = {};
