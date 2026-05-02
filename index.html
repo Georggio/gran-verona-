@@ -685,12 +685,18 @@ async function init() {
   document.getElementById('nivelDesc').textContent = floorCfg.desc || 'Edificio Gran Verona';
   
   try {
-    // Load floor data
     const floorRows = await loadSheetCSV(floorId);
     const areas = parseFloor(floorRows);
     allData = areas;
+
+    // DEBUG BOX
+    const debugEl = document.getElementById('debugBox');
+    const firstRows = floorRows.slice(0, 12).map((r,i) => `F${i}: [${r.map(c=>'"'+c+'"').join(' | ')}]`).join('\n');
+    const areaKeys = Object.keys(areas);
+    debugEl.textContent = `FILAS (primeras 12):\n${firstRows}\n\nAREAS: ${areaKeys.length===0?'(vacio)':areaKeys.join(', ')}`;
+    debugEl.style.display = 'block';
+
     renderAreas(areas, floorCfg);
-    
     document.getElementById('loadingScreen').style.display = 'none';
     document.getElementById('mainContent').style.display = 'block';
   } catch(err) {
@@ -698,7 +704,7 @@ async function init() {
     document.getElementById('loadingScreen').style.display = 'none';
     const es = document.getElementById('errorScreen');
     es.style.display = 'flex';
-    document.getElementById('errorMsg').textContent = err.message || 'Error al conectar con Google Sheets. Verificá que la hoja esté publicada públicamente.';
+    document.getElementById('errorMsg').textContent = err.message || 'Error al conectar con Google Sheets.';
   }
 }
 
@@ -839,5 +845,6 @@ function closeModalIfOverlay(e) {
 
 init();
 </script>
+<div id="debugBox" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#000;color:#0f0;font-family:monospace;font-size:10px;padding:10px;max-height:50vh;overflow:auto;z-index:9999;white-space:pre;border-top:2px solid #0f0;"></div>
 </body>
 </html>
