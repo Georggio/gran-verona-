@@ -624,7 +624,7 @@ function parseFloor(rows) {
   // Find first data row: has a state value in col D (index 3)
   let dataStart = -1;
   for (let i = 0; i < rows.length; i++) {
-    if (isStateValue(rows[i][3] || '')) { dataStart = i; break; }
+    if (isStateValue(rows[i][4] || '')) { dataStart = i; break; }
   }
   if (dataStart === -1) return areas; // no data found
 
@@ -633,11 +633,12 @@ function parseFloor(rows) {
 
   for (let i = dataStart; i < rows.length; i++) {
     const row = rows[i];
-    const areaCell = (row[0] || '').trim();
-    const rubroCell = (row[1] || '').trim();
-    const item = (row[2] || '').trim();
-    const estadoRaw = (row[3] || '').trim();
-    const obs = (row[4] || '').trim();
+    // Data is offset: col A is empty, real data starts at col B (index 1)
+    const areaCell = (row[1] || '').trim();
+    const rubroCell = (row[2] || '').trim();
+    const item = (row[3] || '').trim();
+    const estadoRaw = (row[4] || '').trim();
+    const obs = (row[5] || '').trim();
 
     // Propagate area and rubro downward (merged cells come as empty)
     if (areaCell) currentArea = areaCell;
