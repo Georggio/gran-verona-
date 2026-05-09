@@ -8,456 +8,246 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
-  :root {
-    --bg: #0d0d0d;
-    --bg2: #141414;
-    --bg3: #1c1c1c;
-    --border: #2a2a2a;
-    --green: #5cdb6e;
-    --green-dim: rgba(92,219,110,0.12);
-    --text: #e8e8e8;
-    --text-muted: #777;
-    --text-dim: #aaa;
-    --orange: #f0933a;
-    --blue: #4a9eff;
-    --gray-state: #555;
-    --radius: 10px;
-    --shadow: 0 2px 16px rgba(0,0,0,0.5);
-  }
+:root {
+  --bg: #0d0d0d;
+  --bg2: #141414;
+  --bg3: #1c1c1c;
+  --border: #2a2a2a;
+  --green: #5cdb6e;
+  --green-dim: rgba(92,219,110,0.12);
+  --text: #e8e8e8;
+  --text-muted: #777;
+  --text-dim: #aaa;
+  --orange: #f0933a;
+  --blue: #4a9eff;
+  --gray-state: #555;
+  --radius: 10px;
+  --shadow: 0 2px 16px rgba(0,0,0,0.5);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  min-height: 100vh;
+}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+/* ── LOGIN ─────────────────────────────────────── */
+#login-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+  background: var(--bg);
+}
+.login-logo { width: 140px; margin-bottom: 32px; opacity: 0.95; }
+.login-box {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 32px 28px;
+  width: 100%;
+  max-width: 340px;
+  box-shadow: var(--shadow);
+}
+.login-box h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px; font-weight: 700;
+  letter-spacing: 0.04em; text-align: center;
+  margin-bottom: 6px; color: var(--text);
+}
+.login-box p { text-align: center; color: var(--text-muted); font-size: 13px; margin-bottom: 24px; }
+.login-input {
+  width: 100%; background: var(--bg3);
+  border: 1px solid var(--border); border-radius: 8px;
+  padding: 12px 16px; color: var(--text); font-size: 16px;
+  font-family: 'Barlow', sans-serif; letter-spacing: 0.1em;
+  text-align: center; outline: none; transition: border-color 0.2s; margin-bottom: 14px;
+}
+.login-input:focus { border-color: var(--green); }
+.login-input.shake { animation: shake 0.4s ease; border-color: #e05252; }
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  20%,60%  { transform: translateX(-6px); }
+  40%,80%  { transform: translateX(6px); }
+}
+.login-btn {
+  width: 100%; background: var(--green); color: #0d0d0d;
+  border: none; border-radius: 8px; padding: 12px;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 16px;
+  font-weight: 700; letter-spacing: 0.06em; cursor: pointer; transition: opacity 0.2s;
+}
+.login-btn:hover { opacity: 0.88; }
+.login-error { color: #e05252; font-size: 12px; text-align: center; margin-top: 10px; min-height: 16px; }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Barlow', sans-serif;
-    font-size: 14px;
-    min-height: 100vh;
-  }
+/* ── APP ─────────────────────────────────────── */
+#app { display: none; }
 
-  /* ── LOGIN ─────────────────────────────────────── */
-  #login-screen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 24px;
-    background: var(--bg);
-  }
+/* Header */
+.header {
+  background: #000; border-bottom: 1px solid var(--border);
+  padding: 0 16px; display: flex; align-items: center;
+  gap: 14px; height: 58px; position: sticky; top: 0; z-index: 100;
+}
+.header-logo { height: 34px; }
+.header-divider { width: 1px; height: 28px; background: var(--border); }
+.header-info { flex: 1; }
+.header-label { font-size: 10px; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; }
+.header-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px; font-weight: 700; letter-spacing: 0.04em; line-height: 1.1; color: var(--text);
+}
+.floor-badge {
+  background: var(--green-dim); border: 1px solid var(--green);
+  color: var(--green); font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.06em;
+  padding: 4px 10px; border-radius: 20px; white-space: nowrap;
+}
 
-  .login-logo {
-    width: 140px;
-    margin-bottom: 32px;
-    opacity: 0.95;
-  }
+/* Floor title */
+.floor-hero { padding: 20px 16px 12px; border-bottom: 1px solid var(--border); }
+.floor-hero-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 32px; font-weight: 700; letter-spacing: 0.02em; line-height: 1;
+}
+.floor-hero-sub { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
 
-  .login-box {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 32px 28px;
-    width: 100%;
-    max-width: 340px;
-    box-shadow: var(--shadow);
-  }
+/* ── DEPARTAMENTOS GRID (para pisos con depto) ── */
+.deptos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 8px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.depto-chip {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+.depto-chip:hover { border-color: #444; }
+.depto-chip.active {
+  border-color: var(--green);
+  background: var(--green-dim);
+}
+.depto-chip-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px; font-weight: 700; letter-spacing: 0.04em;
+  color: var(--text);
+}
+.depto-chip.active .depto-chip-num { color: var(--green); }
+.depto-chip-label { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
 
-  .login-box h2 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-align: center;
-    margin-bottom: 6px;
-    color: var(--text);
-  }
+/* Loading / Error */
+.state-box {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; padding: 60px 24px; gap: 12px;
+  color: var(--text-muted); font-size: 13px; text-align: center;
+}
+.spinner {
+  width: 28px; height: 28px;
+  border: 2px solid var(--border); border-top-color: var(--green);
+  border-radius: 50%; animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
 
-  .login-box p {
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 13px;
-    margin-bottom: 24px;
-  }
+/* Area cards */
+.areas-list { padding: 12px 16px 32px; display: flex; flex-direction: column; gap: 10px; }
+.area-card {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden; cursor: pointer; transition: border-color 0.2s;
+}
+.area-card:hover { border-color: #444; }
+.area-card-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 16px; gap: 10px;
+}
+.area-card-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 17px; font-weight: 600; letter-spacing: 0.03em;
+}
+.area-card-meta { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+.area-chevron { color: var(--text-muted); font-size: 18px; transition: transform 0.25s; flex-shrink: 0; }
+.area-card.open .area-chevron { transform: rotate(180deg); }
 
-  .login-input {
-    width: 100%;
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 12px 16px;
-    color: var(--text);
-    font-size: 16px;
-    font-family: 'Barlow', sans-serif;
-    letter-spacing: 0.1em;
-    text-align: center;
-    outline: none;
-    transition: border-color 0.2s;
-    margin-bottom: 14px;
-  }
+/* Progress bar */
+.area-progress {
+  padding: 12px 16px 14px; border-top: 1px solid var(--border); display: none;
+}
+.area-card.open .area-progress { display: block; }
+.progress-bar-track { background: var(--bg3); border-radius: 4px; height: 5px; overflow: hidden; }
+.progress-bar-fill { height: 100%; border-radius: 4px; background: var(--green); transition: width 0.6s ease; }
+.progress-label { font-size: 11px; color: var(--text-muted); margin-top: 5px; }
 
-  .login-input:focus { border-color: var(--green); }
-  .login-input.shake {
-    animation: shake 0.4s ease;
-    border-color: #e05252;
-  }
+/* ── Rubros & Items ── */
+.rubros-list { display: none; flex-direction: column; gap: 0; }
+.area-card.open .rubros-list { display: flex; }
 
-  @keyframes shake {
-    0%,100% { transform: translateX(0); }
-    20%,60% { transform: translateX(-6px); }
-    40%,80% { transform: translateX(6px); }
-  }
+.rubro-block { border-top: 1px solid var(--border); }
+.rubro-header { display: flex; align-items: center; gap: 10px; padding: 12px 16px 8px; }
+.rubro-icon-wrap {
+  width: 32px; height: 32px; border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 17px;
+}
+.rubro-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px; font-weight: 700; letter-spacing: 0.04em; color: var(--text); flex: 1;
+}
 
-  .login-btn {
-    width: 100%;
-    background: var(--green);
-    color: #0d0d0d;
-    border: none;
-    border-radius: 8px;
-    padding: 12px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    cursor: pointer;
-    transition: opacity 0.2s;
-  }
+/* ITEMS */
+.items-list { padding: 0 16px 12px 58px; display: flex; flex-direction: column; gap: 6px; }
+.item-row { display: flex; align-items: flex-start; gap: 8px; }
+.item-name { font-size: 12px; color: var(--text-dim); flex: 1; line-height: 1.4; }
+.status-pill {
+  display: flex; align-items: center; gap: 4px; padding: 2px 7px;
+  border-radius: 20px; font-size: 11px; font-weight: 500; white-space: nowrap; flex-shrink: 0;
+}
+.status-pill .dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+.s0 { background: rgba(85,85,85,0.2); color: var(--gray-state); }
+.s0 .dot { background: var(--gray-state); }
+.s1 { background: rgba(240,147,58,0.15); color: var(--orange); }
+.s1 .dot { background: var(--orange); }
+.s2 { background: rgba(74,158,255,0.15); color: var(--blue); }
+.s2 .dot { background: var(--blue); }
+.s3 { background: rgba(92,219,110,0.15); color: var(--green); }
+.s3 .dot { background: var(--green); }
 
-  .login-btn:hover { opacity: 0.88; }
+/* Observaciones */
+.obs-block {
+  margin: 4px 16px 12px 58px;
+  background: rgba(240,147,58,0.08);
+  border-left: 3px solid var(--orange);
+  border-radius: 0 6px 6px 0;
+  padding: 8px 10px;
+}
+.obs-label { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; color: var(--orange); text-transform: uppercase; margin-bottom: 3px; }
+.obs-text { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
 
-  .login-error {
-    color: #e05252;
-    font-size: 12px;
-    text-align: center;
-    margin-top: 10px;
-    min-height: 16px;
-  }
-
-  /* ── APP ─────────────────────────────────────── */
-  #app { display: none; }
-
-  /* Header */
-  .header {
-    background: #000;
-    border-bottom: 1px solid var(--border);
-    padding: 0 16px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    height: 58px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-
-  .header-logo { height: 34px; }
-
-  .header-divider {
-    width: 1px;
-    height: 28px;
-    background: var(--border);
-  }
-
-  .header-info { flex: 1; }
-
-  .header-label {
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    color: var(--text-muted);
-    text-transform: uppercase;
-  }
-
-  .header-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    line-height: 1.1;
-    color: var(--text);
-  }
-
-  .floor-badge {
-    background: var(--green-dim);
-    border: 1px solid var(--green);
-    color: var(--green);
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    padding: 4px 10px;
-    border-radius: 20px;
-    white-space: nowrap;
-  }
-
-  /* Floor title */
-  .floor-hero {
-    padding: 20px 16px 12px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .floor-hero-name {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    line-height: 1;
-  }
-
-  .floor-hero-sub {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-top: 4px;
-  }
-
-  /* Loading / Error */
-  .state-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 60px 24px;
-    gap: 12px;
-    color: var(--text-muted);
-    font-size: 13px;
-    text-align: center;
-  }
-
-  .spinner {
-    width: 28px;
-    height: 28px;
-    border: 2px solid var(--border);
-    border-top-color: var(--green);
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-  }
-
-  @keyframes spin { to { transform: rotate(360deg); } }
-
-  /* Area cards */
-  .areas-list {
-    padding: 12px 16px 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .area-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    cursor: pointer;
-    transition: border-color 0.2s;
-  }
-
-  .area-card:hover { border-color: #444; }
-
-  .area-card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 16px;
-    gap: 10px;
-  }
-
-  .area-card-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 17px;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-  }
-
-  .area-card-meta {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-top: 2px;
-  }
-
-  .area-chevron {
-    color: var(--text-muted);
-    font-size: 18px;
-    transition: transform 0.25s;
-    flex-shrink: 0;
-  }
-
-  .area-card.open .area-chevron { transform: rotate(180deg); }
-
-  /* Progress bar */
-  .area-progress {
-    padding: 0 16px 14px;
-    border-top: 1px solid var(--border);
-    padding-top: 12px;
-    display: none;
-  }
-
-  .area-card.open .area-progress { display: block; }
-
-  .progress-bar-track {
-    background: var(--bg3);
-    border-radius: 4px;
-    height: 5px;
-    overflow: hidden;
-  }
-
-  .progress-bar-fill {
-    height: 100%;
-    border-radius: 4px;
-    background: var(--green);
-    transition: width 0.6s ease;
-  }
-
-  .progress-label {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-top: 5px;
-  }
-
-  /* ── Rubros & Items ── */
-  .rubros-list {
-    display: none;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .area-card.open .rubros-list { display: flex; }
-
-  /* RUBRO ROW — protagonista */
-  .rubro-block {
-    border-top: 1px solid var(--border);
-  }
-
-  .rubro-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 16px 8px;
-  }
-
-  .rubro-icon-wrap {
-    width: 32px;
-    height: 32px;
-    border-radius: 7px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 17px;
-  }
-
-  .rubro-name {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    color: var(--text);
-    flex: 1;
-  }
-
-  /* ITEMS — segundo plano */
-  .items-list {
-    padding: 0 16px 12px 58px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .item-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .item-name {
-    font-size: 12px;
-    color: var(--text-dim);
-    flex: 1;
-    line-height: 1.4;
-  }
-
-  .status-pill {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    padding: 2px 7px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 500;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .status-pill .dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .s0 { background: rgba(85,85,85,0.2); color: var(--gray-state); }
-  .s0 .dot { background: var(--gray-state); }
-  .s1 { background: rgba(240,147,58,0.15); color: var(--orange); }
-  .s1 .dot { background: var(--orange); }
-  .s2 { background: rgba(74,158,255,0.15); color: var(--blue); }
-  .s2 .dot { background: var(--blue); }
-  .s3 { background: rgba(92,219,110,0.15); color: var(--green); }
-  .s3 .dot { background: var(--green); }
-
-  /* Observaciones */
-  .obs-block {
-    margin: 4px 16px 12px 58px;
-    background: rgba(240,147,58,0.08);
-    border-left: 3px solid var(--orange);
-    border-radius: 0 6px 6px 0;
-    padding: 8px 10px;
-  }
-
-  .obs-label {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    color: var(--orange);
-    text-transform: uppercase;
-    margin-bottom: 3px;
-  }
-
-  .obs-text {
-    font-size: 12px;
-    color: var(--text-dim);
-    line-height: 1.5;
-  }
-
-  /* Legend */
-  .legend {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--border);
-    border-top: 1px solid var(--border);
-    background: var(--bg2);
-  }
-
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 10px;
-    color: var(--text-muted);
-  }
-
-  .legend-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-  }
+/* Legend */
+.legend {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  padding: 12px 16px; border-bottom: 1px solid var(--border);
+  border-top: 1px solid var(--border); background: var(--bg2);
+}
+.legend-item { display: flex; align-items: center; gap: 5px; font-size: 10px; color: var(--text-muted); }
+.legend-dot { width: 7px; height: 7px; border-radius: 50%; }
 </style>
 </head>
 <body>
 
 <!-- LOGIN -->
 <div id="login-screen">
-  <img class="login-logo" src="https://raw.githubusercontent.com/Georggio/gran-verona-/main/guten_logo.jpg"
-       onerror="this.style.display='none'"
-       alt="Guten S.A.">
+  <img class="login-logo"
+    src="https://raw.githubusercontent.com/Georggio/gran-verona-/main/guten_logo.jpg"
+    onerror="this.style.display='none'" alt="Guten S.A.">
   <div class="login-box">
     <h2>GRAN VERONA</h2>
     <p>Avance de obra · Acceso privado</p>
@@ -471,9 +261,8 @@
 <div id="app">
   <header class="header">
     <img class="header-logo"
-         src="https://raw.githubusercontent.com/Georggio/gran-verona-/main/guten_logo.jpg"
-         onerror="this.style.display='none'"
-         alt="Guten">
+      src="https://raw.githubusercontent.com/Georggio/gran-verona-/main/guten_logo.jpg"
+      onerror="this.style.display='none'" alt="Guten">
     <div class="header-divider"></div>
     <div class="header-info">
       <div class="header-label">Avance de obra</div>
@@ -494,6 +283,9 @@
     <div class="floor-hero-sub" id="floor-sub"></div>
   </div>
 
+  <!-- Grilla de departamentos (se muestra sólo en pisos con deptos) -->
+  <div id="deptos-section" style="display:none"></div>
+
   <div id="content">
     <div class="state-box"><div class="spinner"></div><span>Conectando con Google Sheets…</span></div>
   </div>
@@ -505,59 +297,77 @@ const SHEET_ID = '1sSSKaxSSfakE8b5LJPW0YPNtbjO4Lpr7IkzFqycEAt0';
 const PASSWORD = 'gv2027';
 
 const FLOORS = {
-  subsuelo: { name: 'SUBSUELO',   sub: 'Cocheras' },
-  pb:       { name: 'PLANTA BAJA', sub: 'Locales Comerciales' },
-  entre:    { name: 'ENTREPISO',   sub: 'Locales Comerciales' },
-  p1:       { name: 'PISO 1',      sub: '7 Departamentos' },
-  p2:       { name: 'PISO 2',      sub: '7 Departamentos' },
-  p3:       { name: 'PISO 3',      sub: '7 Departamentos' },
-  p4:       { name: 'PISO 4',      sub: '7 Departamentos' },
-  p5:       { name: 'PISO 5',      sub: '7 Departamentos' },
-  p6:       { name: 'PISO 6',      sub: '7 Departamentos' },
-  p7:       { name: 'PISO 7',      sub: '7 Departamentos' },
-  p8:       { name: 'PISO 8',      sub: '7 Departamentos' },
-  p9:       { name: 'PISO 9',      sub: '7 Departamentos' },
-  terraza:  { name: 'TERRAZA',     sub: 'Quincho · Parrillero · Pileta · Solarium' },
+  subsuelo: { name: 'SUBSUELO',    sub: 'Cocheras',                       hasDeptos: false },
+  pb:       { name: 'PLANTA BAJA', sub: 'Locales Comerciales',            hasDeptos: false },
+  entre:    { name: 'ENTREPISO',   sub: 'Locales Comerciales',            hasDeptos: false },
+  p1:       { name: 'PISO 1',      sub: '7 Departamentos',                hasDeptos: true  },
+  p2:       { name: 'PISO 2',      sub: '7 Departamentos',                hasDeptos: true  },
+  p3:       { name: 'PISO 3',      sub: '7 Departamentos',                hasDeptos: true  },
+  p4:       { name: 'PISO 4',      sub: '7 Departamentos',                hasDeptos: true  },
+  p5:       { name: 'PISO 5',      sub: '7 Departamentos',                hasDeptos: true  },
+  p6:       { name: 'PISO 6',      sub: '7 Departamentos',                hasDeptos: true  },
+  p7:       { name: 'PISO 7',      sub: '7 Departamentos',                hasDeptos: true  },
+  p8:       { name: 'PISO 8',      sub: '7 Departamentos',                hasDeptos: true  },
+  p9:       { name: 'PISO 9',      sub: '7 Departamentos',                hasDeptos: true  },
+  terraza:  { name: 'TERRAZA',     sub: 'Quincho · Parrillero · Pileta · Solarium', hasDeptos: false },
 };
 
-// Íconos únicos por rubro — todos referidos a construcción, sin repetir
+// ── ICONOS: 1 ícono único por rubro, normalizado sin tildes ──
+// La clave es el nombre del rubro en minúsculas, sin tildes, para matching robusto
 const RUBRO_ICONS = {
-  // rubros exactos del sheet (en minúsculas para comparación)
-  'yesería':                    { icon: 'ti-wall',             color: '#b89c6e', bg: 'rgba(184,156,110,0.15)' },
-  'aberturas de aluminio':      { icon: 'ti-door',             color: '#6eb8e0', bg: 'rgba(110,184,224,0.15)' },
-  'aberturas interiores':       { icon: 'ti-window',           color: '#a0c4e8', bg: 'rgba(160,196,232,0.15)' },
-  'pisos':                      { icon: 'ti-layers-intersect', color: '#c8a96e', bg: 'rgba(200,169,110,0.15)' },
-  'revestimientos':             { icon: 'ti-stack-2',          color: '#9b8fc0', bg: 'rgba(155,143,192,0.15)' },
-  'zócalos':                    { icon: 'ti-ruler-2',          color: '#80bfa0', bg: 'rgba(128,191,160,0.15)' },
-  'instalación cloacal':        { icon: 'ti-git-branch',       color: '#6db8a8', bg: 'rgba(109,184,168,0.15)' },
-  'instalaciones sanitarias':   { icon: 'ti-droplet',          color: '#5baae0', bg: 'rgba(91,170,224,0.15)' },
-  'instalación de gas':         { icon: 'ti-flame',            color: '#e08050', bg: 'rgba(224,128,80,0.15)' },
-  'instalación eléctrica':      { icon: 'ti-plug',             color: '#f0d060', bg: 'rgba(240,208,96,0.15)' },
-  'preinstalación aa':          { icon: 'ti-wind',             color: '#80d0d8', bg: 'rgba(128,208,216,0.15)' },
-  'amoblamientos':              { icon: 'ti-armchair',         color: '#c08878', bg: 'rgba(192,136,120,0.15)' },
-  'pintura':                    { icon: 'ti-brush',            color: '#d490c0', bg: 'rgba(212,144,192,0.15)' },
-  'carpintería':                { icon: 'ti-hammer',           color: '#c8a060', bg: 'rgba(200,160,96,0.15)' },
-  'hormigón':                   { icon: 'ti-cube',             color: '#9090a0', bg: 'rgba(144,144,160,0.15)' },
-  'impermeabilización':         { icon: 'ti-shield',           color: '#70b8d8', bg: 'rgba(112,184,216,0.15)' },
-  'escaleras':                  { icon: 'ti-stairs',           color: '#a8c890', bg: 'rgba(168,200,144,0.15)' },
-  'ascensor':                   { icon: 'ti-elevator',         color: '#b0a0d8', bg: 'rgba(176,160,216,0.15)' },
-  'cielorrasos':                { icon: 'ti-border-top',       color: '#c0b898', bg: 'rgba(192,184,152,0.15)' },
-  'solados':                    { icon: 'ti-layout-grid',      color: '#b8c8a0', bg: 'rgba(184,200,160,0.15)' },
-  'estructura':                 { icon: 'ti-building',         color: '#9898b8', bg: 'rgba(152,152,184,0.15)' },
-  'mampostería':                { icon: 'ti-layout-sidebar',   color: '#c0a880', bg: 'rgba(192,168,128,0.15)' },
-  'contrapisos':                { icon: 'ti-layer-difference', color: '#a8b8a0', bg: 'rgba(168,184,160,0.15)' },
-  'aislaciones':                { icon: 'ti-barrier-block',    color: '#d0b068', bg: 'rgba(208,176,104,0.15)' },
-  'sanitarios':                 { icon: 'ti-bath',             color: '#78c0d0', bg: 'rgba(120,192,208,0.15)' },
-  'cocina':                     { icon: 'ti-tool',             color: '#c89870', bg: 'rgba(200,152,112,0.15)' },
-  'default':                    { icon: 'ti-settings',         color: '#888888', bg: 'rgba(136,136,136,0.12)' },
+  'yeseria':               { icon: 'ti-wall',             color: '#b89c6e', bg: 'rgba(184,156,110,0.15)' },
+  'aberturas de aluminio': { icon: 'ti-door',             color: '#6eb8e0', bg: 'rgba(110,184,224,0.15)' },
+  'aberturas interiores':  { icon: 'ti-window',           color: '#a0c4e8', bg: 'rgba(160,196,232,0.15)' },
+  'pisos':                 { icon: 'ti-layers-intersect', color: '#c8a96e', bg: 'rgba(200,169,110,0.15)' },
+  'revestimientos':        { icon: 'ti-stack-2',          color: '#9b8fc0', bg: 'rgba(155,143,192,0.15)' },
+  'zocalos':               { icon: 'ti-ruler-2',          color: '#80bfa0', bg: 'rgba(128,191,160,0.15)' },
+  'instalacion cloacal':   { icon: 'ti-git-branch',       color: '#6db8a8', bg: 'rgba(109,184,168,0.15)' },
+  'instalaciones sanitarias': { icon: 'ti-droplet',       color: '#5baae0', bg: 'rgba(91,170,224,0.15)' },
+  'instalacion de gas':    { icon: 'ti-flame',            color: '#e08050', bg: 'rgba(224,128,80,0.15)' },
+  'instalacion electrica': { icon: 'ti-plug',             color: '#f0d060', bg: 'rgba(240,208,96,0.15)' },
+  'preinstalacion aa':     { icon: 'ti-wind',             color: '#80d0d8', bg: 'rgba(128,208,216,0.15)' },
+  'amoblamientos':         { icon: 'ti-armchair',         color: '#c08878', bg: 'rgba(192,136,120,0.15)' },
+  'pintura':               { icon: 'ti-brush',            color: '#d490c0', bg: 'rgba(212,144,192,0.15)' },
+  'carpinteria':           { icon: 'ti-hammer',           color: '#c8a060', bg: 'rgba(200,160,96,0.15)' },
+  'hormigon':              { icon: 'ti-cube',             color: '#9090a0', bg: 'rgba(144,144,160,0.15)' },
+  'impermeabilizacion':    { icon: 'ti-shield',           color: '#70b8d8', bg: 'rgba(112,184,216,0.15)' },
+  'escaleras':             { icon: 'ti-stairs',           color: '#a8c890', bg: 'rgba(168,200,144,0.15)' },
+  'ascensor':              { icon: 'ti-elevator',         color: '#b0a0d8', bg: 'rgba(176,160,216,0.15)' },
+  'cielorrasos':           { icon: 'ti-border-top',       color: '#c0b898', bg: 'rgba(192,184,152,0.15)' },
+  'solados':               { icon: 'ti-layout-grid',      color: '#b8c8a0', bg: 'rgba(184,200,160,0.15)' },
+  'estructura':            { icon: 'ti-building',         color: '#9898b8', bg: 'rgba(152,152,184,0.15)' },
+  'mamposteria':           { icon: 'ti-layout-sidebar',   color: '#c0a880', bg: 'rgba(192,168,128,0.15)' },
+  'contrapisos':           { icon: 'ti-layer-difference', color: '#a8b8a0', bg: 'rgba(168,184,160,0.15)' },
+  'aislaciones':           { icon: 'ti-barrier-block',    color: '#d0b068', bg: 'rgba(208,176,104,0.15)' },
+  'sanitarios':            { icon: 'ti-bath',             color: '#78c0d0', bg: 'rgba(120,192,208,0.15)' },
+  'cocina':                { icon: 'ti-tool',             color: '#c89870', bg: 'rgba(200,152,112,0.15)' },
+  // fallback único — diferente de todos los anteriores
+  'default':               { icon: 'ti-category',         color: '#888888', bg: 'rgba(136,136,136,0.12)' },
 };
+
+// Nombres de cabecera a ignorar al parsear
+const HEADER_KEYWORDS = ['área', 'area', 'rubro', 'item', 'ítem', 'estado', 'observ'];
 
 const STATUS_LABELS = ['Por comenzar', 'En ejecución', 'Finalizado parcialmente', 'Finalizado y aprobado'];
 
-// ── AUTH ──────────────────────────────────────────────────────
-function checkAuth() {
-  return sessionStorage.getItem('gv_auth') === '1';
+// ── UTILS ─────────────────────────────────────────────────────
+// Normaliza texto: minúsculas, sin tildes, sin puntuación extra
+function norm(s) {
+  return (s || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')   // quita tildes/diacríticos
+    .replace(/[^a-z0-9\s]/g, '')       // quita puntuación
+    .trim();
 }
+
+function isHeaderRow(row) {
+  const joined = norm(row.join(' '));
+  return HEADER_KEYWORDS.some(k => joined.includes(k));
+}
+
+// ── AUTH ──────────────────────────────────────────────────────
+function checkAuth() { return sessionStorage.getItem('gv_auth') === '1'; }
 
 document.getElementById('login-btn').addEventListener('click', tryLogin);
 document.getElementById('pw-input').addEventListener('keydown', e => { if (e.key === 'Enter') tryLogin(); });
@@ -571,7 +381,7 @@ function tryLogin() {
     initApp();
   } else {
     const input = document.getElementById('pw-input');
-    const err = document.getElementById('login-error');
+    const err   = document.getElementById('login-error');
     input.classList.remove('shake');
     void input.offsetWidth;
     input.classList.add('shake');
@@ -588,36 +398,38 @@ function getFloorId() {
   return FLOORS[p] ? p : 'p1';
 }
 
+// Estado global del depto seleccionado
+let allAreas = [];   // todos los datos parseados [{name, rubros}]
+let selectedDepto = null;
+
 function initApp() {
   const floorId = getFloorId();
-  const floor = FLOORS[floorId];
+  const floor   = FLOORS[floorId];
   document.getElementById('floor-badge').textContent = floor.name;
-  document.getElementById('floor-name').textContent = floor.name;
-  document.getElementById('floor-sub').textContent = floor.sub;
-  loadSheet(floorId);
+  document.getElementById('floor-name').textContent  = floor.name;
+  document.getElementById('floor-sub').textContent   = floor.sub;
+  loadSheet(floorId, floor.hasDeptos);
 }
 
 // ── DATA ──────────────────────────────────────────────────────
-async function loadSheet(floorId) {
+async function loadSheet(floorId, hasDeptos) {
   const content = document.getElementById('content');
   content.innerHTML = '<div class="state-box"><div class="spinner"></div><span>Conectando con Google Sheets…</span></div>';
 
   const sheetName = encodeURIComponent(floorId);
 
-  // Method 1: gviz query
   try {
     const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${sheetName}`;
     const res = await fetch(url);
     if (res.ok) {
       const text = await res.text();
       if (text && text.length > 10 && !text.startsWith('<!')) {
-        renderData(parseCSV(text), content);
+        processData(parseCSV(text), content, hasDeptos);
         return;
       }
     }
   } catch(e) {}
 
-  // Method 2: export CSV
   try {
     const gid = await getGid(floorId);
     const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&sheet=${sheetName}${gid ? '&gid='+gid : ''}`;
@@ -625,7 +437,7 @@ async function loadSheet(floorId) {
     if (res.ok) {
       const text = await res.text();
       if (text && text.length > 10) {
-        renderData(parseCSV(text), content);
+        processData(parseCSV(text), content, hasDeptos);
         return;
       }
     }
@@ -636,7 +448,7 @@ async function loadSheet(floorId) {
 
 async function getGid(sheetName) {
   try {
-    const res = await fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/edit`);
+    const res  = await fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/edit`);
     const text = await res.text();
     const match = text.match(new RegExp(`"${sheetName}"[^}]*"sheetId":(\\d+)`));
     return match ? match[1] : null;
@@ -650,9 +462,9 @@ function parseCSV(text) {
     const row = [];
     let inQ = false, cur = '';
     for (let i = 0; i < line.length; i++) {
-      if (line[i] === '"') { inQ = !inQ; }
+      if (line[i] === '"')             { inQ = !inQ; }
       else if (line[i] === ',' && !inQ) { row.push(cur.trim()); cur = ''; }
-      else { cur += line[i]; }
+      else                              { cur += line[i]; }
     }
     row.push(cur.trim());
     rows.push(row);
@@ -662,43 +474,30 @@ function parseCSV(text) {
 
 // ── PARSE ─────────────────────────────────────────────────────
 function parseRows(rows) {
-  // Find header row (contains "Área" or "Rubro" or "Ítem" or "Estado")
+  // Buscar fila de encabezado para saber dónde empieza la data
   let dataStart = -1;
   for (let i = 0; i < rows.length; i++) {
-    const r = rows[i].join(' ').toLowerCase();
-    if (r.includes('área') || r.includes('area') || r.includes('rubro') || r.includes('estado')) {
-      dataStart = i + 1;
-      break;
-    }
+    if (isHeaderRow(rows[i])) { dataStart = i + 1; break; }
   }
   if (dataStart === -1) {
-    // Fallback: find first row that looks like data (has at least 3 non-empty cells)
     for (let i = 0; i < rows.length; i++) {
-      const filled = rows[i].filter(c => c.trim().length > 0).length;
-      if (filled >= 3) { dataStart = i; break; }
+      if (rows[i].filter(c => c.trim().length > 0).length >= 3) { dataStart = i; break; }
     }
   }
   if (dataStart === -1) return [];
 
-  // Detect column offset: find which column index area/rubro data starts
-  // Check row at dataStart and a few after for data
-  // We know structure: col B = Área, col C = Rubro, col D = Ítem, col E = Estado, col F = Obs
-  // But CSV col index: if col A is empty, B=index1, C=index2, etc.
-  // Auto-detect: find first row with 4+ cells, figure out offset
+  // Detectar offset de columna (columna A suele estar vacía)
   let colOffset = 0;
   for (let i = dataStart; i < Math.min(dataStart + 5, rows.length); i++) {
-    const row = rows[i];
-    // Find first non-empty cell
-    for (let c = 0; c < row.length; c++) {
-      if (row[c].trim().length > 0) { colOffset = c; break; }
+    for (let c = 0; c < rows[i].length; c++) {
+      if (rows[i][c].trim().length > 0) { colOffset = c; break; }
     }
     if (colOffset > 0) break;
   }
 
-  const areas = {}; // area -> { rubros: { rubro -> { items: [{name, status, obs}], obs } } }
+  const areas     = {};
   const areaOrder = [];
-  const rubroOrder = {}; // area -> [rubro names in order]
-
+  const rubroOrder = {};
   let lastArea = '', lastRubro = '';
 
   for (let i = dataStart; i < rows.length; i++) {
@@ -709,16 +508,23 @@ function parseRows(rows) {
     const rubro  = (row[colOffset + 1] || '').trim();
     const item   = (row[colOffset + 2] || '').trim();
     const estado = (row[colOffset + 3] || '').trim();
-    const obs    = (row[colOffset + 4] || '').trim(); // Observaciones — col F
+    const obs    = (row[colOffset + 4] || '').trim();
 
-    if (!item) continue; // skip empty item rows
+    if (!item) continue;
 
-    // Propagate area and rubro from previous rows (merged cells)
-    if (area) lastArea = area;
+    // Saltar filas que son cabeceras repetidas (celdas con "área", "rubro", etc.)
+    if (isHeaderRow([area, rubro, item, estado])) continue;
+
+    if (area)  lastArea  = area;
     if (rubro) lastRubro = rubro;
 
-    const a = lastArea || '(Sin área)';
+    const a = lastArea  || '(Sin área)';
     const r = lastRubro || '(Sin rubro)';
+
+    // FIX: ignorar el área si su nombre normalizado contiene "area" o "espacio"
+    // (esto filtra la fila de encabezado que se coló como área)
+    const aNorm = norm(a);
+    if (aNorm === 'area' || aNorm === 'area espacio' || aNorm.startsWith('area ')) continue;
 
     if (!areas[a]) { areas[a] = { rubros: {} }; areaOrder.push(a); }
     if (!areas[a].rubros[r]) {
@@ -727,22 +533,21 @@ function parseRows(rows) {
       rubroOrder[a].push(r);
     }
 
-    const statusIdx = parseStatus(estado);
-    areas[a].rubros[r].items.push({ name: item, status: statusIdx, obs });
+    areas[a].rubros[r].items.push({ name: item, status: parseStatus(estado), obs });
   }
 
   return areaOrder.map(a => ({
-    name: a,
-    rubros: rubroOrder[a].map(r => ({
-      name: r,
+    name:   a,
+    rubros: (rubroOrder[a] || []).map(r => ({
+      name:  r,
       items: areas[a].rubros[r].items,
     })),
   }));
 }
 
 function parseStatus(s) {
-  s = s.toLowerCase().trim();
-  if (!s || s === '0' || s.includes('comen') || s.includes('pronto')) return 0;
+  s = norm(s);
+  if (!s || s === '0' || s.includes('comen') || s.includes('pronto') || s.includes('por')) return 0;
   if (s === '1' || s.includes('ejecuc') || s.includes('proceso')) return 1;
   if (s === '2' || s.includes('parcial')) return 2;
   if (s === '3' || s.includes('finaliz') || s.includes('aprobad')) return 3;
@@ -758,22 +563,112 @@ function calcProgress(rubros) {
 }
 
 function getRubroStyle(rubroName) {
-  const key = rubroName.toLowerCase().trim();
-  // Try exact match first
+  const key = norm(rubroName);
   if (RUBRO_ICONS[key]) return RUBRO_ICONS[key];
-  // Try partial match
+  // Partial match: clave contenida en el nombre o vice-versa
   for (const k in RUBRO_ICONS) {
-    if (k !== 'default' && (key.includes(k) || k.includes(key))) return RUBRO_ICONS[k];
+    if (k === 'default') continue;
+    if (key.includes(k) || k.includes(key)) return RUBRO_ICONS[k];
   }
   return RUBRO_ICONS['default'];
 }
 
-// ── RENDER ────────────────────────────────────────────────────
-function renderData(rows, container) {
-  const areas = parseRows(rows);
+// ── PROCESS (depto vs área simple) ────────────────────────────
+function processData(rows, container, hasDeptos) {
+  allAreas = parseRows(rows);
 
-  if (!areas.length) {
+  if (!allAreas.length) {
     container.innerHTML = '<div class="state-box"><i class="ti ti-database-off" style="font-size:32px;color:#555"></i><span>Sin datos en esta hoja.<br>Verificá la estructura de columnas.</span></div>';
+    return;
+  }
+
+  if (hasDeptos) {
+    // Separar áreas comunes (Hall del piso, etc.) de departamentos
+    const deptos  = allAreas.filter(a => norm(a.name).startsWith('depto') || norm(a.name).startsWith('departamento') || /^\d+[a-z]?$/.test(norm(a.name)));
+    const comunes = allAreas.filter(a => !deptos.includes(a));
+
+    renderDeptosGrid(deptos, comunes, container);
+  } else {
+    renderAreas(allAreas, container);
+  }
+}
+
+// ── RENDER DEPTOS GRID ────────────────────────────────────────
+function renderDeptosGrid(deptos, comunes, container) {
+  const section = document.getElementById('deptos-section');
+  section.style.display = 'block';
+  section.innerHTML = '';
+
+  if (deptos.length === 0) {
+    // No hay áreas con nombre "Depto X", mostrar todo directamente
+    renderAreas(allAreas, container);
+    return;
+  }
+
+  const grid = document.createElement('div');
+  grid.className = 'deptos-grid';
+
+  // Chip "Áreas Comunes" si existen
+  if (comunes.length > 0) {
+    const chip = document.createElement('div');
+    chip.className = 'depto-chip' + (selectedDepto === '__comunes__' ? ' active' : '');
+    chip.innerHTML = `<div class="depto-chip-num" style="font-size:13px">COMÚN</div><div class="depto-chip-label">Áreas</div>`;
+    chip.addEventListener('click', () => {
+      selectedDepto = '__comunes__';
+      updateChips(grid);
+      renderAreas(comunes, container);
+    });
+    grid.appendChild(chip);
+  }
+
+  for (const depto of deptos) {
+    const chip = document.createElement('div');
+    const label = depto.name;
+    // Extraer número del nombre ("Depto 1A" → "1A")
+    const numMatch = label.match(/(\d+\s*[a-zA-Z]?)$/);
+    const num = numMatch ? numMatch[1].trim() : label;
+
+    chip.className = 'depto-chip' + (selectedDepto === label ? ' active' : '');
+    chip.dataset.key = label;
+    chip.innerHTML = `<div class="depto-chip-num">${num}</div><div class="depto-chip-label">Depto</div>`;
+    chip.addEventListener('click', () => {
+      selectedDepto = label;
+      updateChips(grid);
+      renderAreas([depto], container);
+    });
+    grid.appendChild(chip);
+  }
+
+  section.appendChild(grid);
+
+  // Auto-seleccionar el primer depto si ninguno está seleccionado
+  if (!selectedDepto) {
+    const first = deptos[0] || comunes[0];
+    if (first) {
+      selectedDepto = first.name;
+      updateChips(grid);
+      renderAreas([first], container);
+    }
+  } else {
+    // Restaurar selección previa
+    const target = allAreas.find(a => a.name === selectedDepto);
+    if (target) renderAreas([target], container);
+    else renderAreas(comunes.length ? comunes : [deptos[0]], container);
+  }
+}
+
+function updateChips(grid) {
+  grid.querySelectorAll('.depto-chip').forEach(chip => {
+    const isComun = chip.querySelector('.depto-chip-num')?.textContent === 'COMÚN';
+    const key     = isComun ? '__comunes__' : chip.dataset.key;
+    chip.classList.toggle('active', key === selectedDepto);
+  });
+}
+
+// ── RENDER AREAS ──────────────────────────────────────────────
+function renderAreas(areas, container) {
+  if (!areas.length) {
+    container.innerHTML = '<div class="state-box"><i class="ti ti-inbox" style="font-size:32px;color:#555"></i><span>Sin datos para este departamento.</span></div>';
     return;
   }
 
@@ -781,7 +676,7 @@ function renderData(rows, container) {
   list.className = 'areas-list';
 
   for (const area of areas) {
-    const progress = calcProgress(area.rubros);
+    const progress   = calcProgress(area.rubros);
     const totalItems = area.rubros.reduce((s, r) => s + r.items.length, 0);
 
     const card = document.createElement('div');
@@ -798,7 +693,7 @@ function renderData(rows, container) {
       <i class="ti ti-chevron-down area-chevron"></i>
     `;
 
-    // Progress section
+    // Progress
     const progressEl = document.createElement('div');
     progressEl.className = 'area-progress';
     progressEl.innerHTML = `
@@ -806,7 +701,7 @@ function renderData(rows, container) {
       <div class="progress-label">${progress}% de avance global</div>
     `;
 
-    // Rubros list
+    // Rubros
     const rubrosList = document.createElement('div');
     rubrosList.className = 'rubros-list';
 
@@ -815,7 +710,6 @@ function renderData(rows, container) {
       const block = document.createElement('div');
       block.className = 'rubro-block';
 
-      // Rubro header — protagonista
       const rh = document.createElement('div');
       rh.className = 'rubro-header';
       rh.innerHTML = `
@@ -825,34 +719,25 @@ function renderData(rows, container) {
         <div class="rubro-name" style="color:${style.color}">${rubro.name}</div>
       `;
 
-      // Items — segundo plano
       const itemsEl = document.createElement('div');
       itemsEl.className = 'items-list';
 
-      // Check if any item in this rubro has an obs
       let blockObs = '';
-
       for (const item of rubro.items) {
-        const sc = getStatusClass(item.status);
+        const sc  = getStatusClass(item.status);
         const row = document.createElement('div');
         row.className = 'item-row';
         row.innerHTML = `
           <div class="item-name">${item.name}</div>
-          <div class="status-pill ${sc}">
-            <div class="dot"></div>
-            ${STATUS_LABELS[item.status]}
-          </div>
+          <div class="status-pill ${sc}"><div class="dot"></div>${STATUS_LABELS[item.status]}</div>
         `;
         itemsEl.appendChild(row);
-
-        // Collect obs (use last non-empty obs per rubro block)
         if (item.obs && item.obs.trim()) blockObs = item.obs.trim();
       }
 
       block.appendChild(rh);
       block.appendChild(itemsEl);
 
-      // Observaciones block
       if (blockObs) {
         const obsEl = document.createElement('div');
         obsEl.className = 'obs-block';
@@ -867,10 +752,7 @@ function renderData(rows, container) {
     card.appendChild(progressEl);
     card.appendChild(rubrosList);
 
-    // Toggle
-    header.addEventListener('click', () => {
-      card.classList.toggle('open');
-    });
+    header.addEventListener('click', () => card.classList.toggle('open'));
 
     list.appendChild(card);
   }
