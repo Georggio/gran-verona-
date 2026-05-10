@@ -9,236 +9,128 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
 :root {
-  --bg: #0d0d0d;
-  --bg2: #141414;
-  --bg3: #1c1c1c;
-  --border: #2a2a2a;
-  --green: #5cdb6e;
+  --bg:        #0d0d0d;
+  --bg2:       #141414;
+  --bg3:       #1c1c1c;
+  --border:    #2a2a2a;
+  --green:     #5cdb6e;
   --green-dim: rgba(92,219,110,0.12);
-  --text: #e8e8e8;
-  --text-muted: #777;
-  --text-dim: #aaa;
-  --orange: #f0933a;
-  --blue: #4a9eff;
-  --gray-state: #555;
-  --radius: 10px;
-  --shadow: 0 2px 16px rgba(0,0,0,0.5);
+  --text:      #e8e8e8;
+  --muted:     #777;
+  --dim:       #aaa;
+  --orange:    #f0933a;
+  --blue:      #4a9eff;
+  --gray-s:    #555;
+  --r:         10px;
+  --shadow:    0 2px 16px rgba(0,0,0,.5);
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Barlow', sans-serif;
-  font-size: 14px;
-  min-height: 100vh;
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:14px;min-height:100vh}
 
-/* ── LOGIN ─────────────────────────────────────── */
-#login-screen {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 24px;
-  background: var(--bg);
-}
-.login-logo { width: 140px; margin-bottom: 32px; opacity: 0.95; }
-.login-box {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 32px 28px;
-  width: 100%;
-  max-width: 340px;
-  box-shadow: var(--shadow);
-}
-.login-box h2 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 22px; font-weight: 700;
-  letter-spacing: 0.04em; text-align: center;
-  margin-bottom: 6px; color: var(--text);
-}
-.login-box p { text-align: center; color: var(--text-muted); font-size: 13px; margin-bottom: 24px; }
-.login-input {
-  width: 100%; background: var(--bg3);
-  border: 1px solid var(--border); border-radius: 8px;
-  padding: 12px 16px; color: var(--text); font-size: 16px;
-  font-family: 'Barlow', sans-serif; letter-spacing: 0.1em;
-  text-align: center; outline: none; transition: border-color 0.2s; margin-bottom: 14px;
-}
-.login-input:focus { border-color: var(--green); }
-.login-input.shake { animation: shake 0.4s ease; border-color: #e05252; }
-@keyframes shake {
-  0%,100% { transform: translateX(0); }
-  20%,60%  { transform: translateX(-6px); }
-  40%,80%  { transform: translateX(6px); }
-}
-.login-btn {
-  width: 100%; background: var(--green); color: #0d0d0d;
-  border: none; border-radius: 8px; padding: 12px;
-  font-family: 'Barlow Condensed', sans-serif; font-size: 16px;
-  font-weight: 700; letter-spacing: 0.06em; cursor: pointer; transition: opacity 0.2s;
-}
-.login-btn:hover { opacity: 0.88; }
-.login-error { color: #e05252; font-size: 12px; text-align: center; margin-top: 10px; min-height: 16px; }
+/* ── LOGIN ──────────────────────────────── */
+#login-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:24px}
+.login-logo{width:140px;margin-bottom:32px;opacity:.95}
+.login-box{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:32px 28px;width:100%;max-width:340px;box-shadow:var(--shadow)}
+.login-box h2{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;letter-spacing:.04em;text-align:center;margin-bottom:6px}
+.login-box p{text-align:center;color:var(--muted);font-size:13px;margin-bottom:24px}
+.login-input{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px 16px;color:var(--text);font-size:16px;font-family:'Barlow',sans-serif;letter-spacing:.1em;text-align:center;outline:none;transition:border-color .2s;margin-bottom:14px}
+.login-input:focus{border-color:var(--green)}
+.login-input.shake{animation:shake .4s ease;border-color:#e05252}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+.login-btn{width:100%;background:var(--green);color:#0d0d0d;border:none;border-radius:8px;padding:12px;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;letter-spacing:.06em;cursor:pointer;transition:opacity .2s}
+.login-btn:hover{opacity:.88}
+.login-error{color:#e05252;font-size:12px;text-align:center;margin-top:10px;min-height:16px}
 
-/* ── APP ─────────────────────────────────────── */
-#app { display: none; }
+/* ── APP ─────────────────────────────────── */
+#app{display:none}
 
 /* Header */
-.header {
-  background: #000; border-bottom: 1px solid var(--border);
-  padding: 0 16px; display: flex; align-items: center;
-  gap: 14px; height: 58px; position: sticky; top: 0; z-index: 100;
-}
-.header-logo { height: 34px; }
-.header-divider { width: 1px; height: 28px; background: var(--border); }
-.header-info { flex: 1; }
-.header-label { font-size: 10px; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; }
-.header-title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 18px; font-weight: 700; letter-spacing: 0.04em; line-height: 1.1; color: var(--text);
-}
-.floor-badge {
-  background: var(--green-dim); border: 1px solid var(--green);
-  color: var(--green); font-family: 'Barlow Condensed', sans-serif;
-  font-size: 13px; font-weight: 700; letter-spacing: 0.06em;
-  padding: 4px 10px; border-radius: 20px; white-space: nowrap;
-}
+.header{background:#000;border-bottom:1px solid var(--border);padding:0 16px;display:flex;align-items:center;gap:14px;height:58px;position:sticky;top:0;z-index:100}
+.header-logo{height:34px}
+.header-divider{width:1px;height:28px;background:var(--border)}
+.header-info{flex:1}
+.header-label{font-size:10px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.header-title{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:.04em;line-height:1.1}
+.floor-badge{background:var(--green-dim);border:1px solid var(--green);color:var(--green);font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.06em;padding:4px 10px;border-radius:20px;white-space:nowrap}
 
-/* Floor title */
-.floor-hero { padding: 20px 16px 12px; border-bottom: 1px solid var(--border); }
-.floor-hero-name {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 32px; font-weight: 700; letter-spacing: 0.02em; line-height: 1;
-}
-.floor-hero-sub { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
-
-/* ── DEPARTAMENTOS GRID (para pisos con depto) ── */
-.deptos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-  gap: 8px;
-  padding: 14px 16px;
-  border-bottom: 1px solid var(--border);
-}
-.depto-chip {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 8px;
-  text-align: center;
-  cursor: pointer;
-  transition: border-color 0.2s, background 0.2s;
-}
-.depto-chip:hover { border-color: #444; }
-.depto-chip.active {
-  border-color: var(--green);
-  background: var(--green-dim);
-}
-.depto-chip-num {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 18px; font-weight: 700; letter-spacing: 0.04em;
-  color: var(--text);
-}
-.depto-chip.active .depto-chip-num { color: var(--green); }
-.depto-chip-label { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
-
-/* Loading / Error */
-.state-box {
-  display: flex; flex-direction: column; align-items: center;
-  justify-content: center; padding: 60px 24px; gap: 12px;
-  color: var(--text-muted); font-size: 13px; text-align: center;
-}
-.spinner {
-  width: 28px; height: 28px;
-  border: 2px solid var(--border); border-top-color: var(--green);
-  border-radius: 50%; animation: spin 0.8s linear infinite;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-
-/* Area cards */
-.areas-list { padding: 12px 16px 32px; display: flex; flex-direction: column; gap: 10px; }
-.area-card {
-  background: var(--bg2); border: 1px solid var(--border);
-  border-radius: var(--radius); overflow: hidden; cursor: pointer; transition: border-color 0.2s;
-}
-.area-card:hover { border-color: #444; }
-.area-card-header {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 16px; gap: 10px;
-}
-.area-card-title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 17px; font-weight: 600; letter-spacing: 0.03em;
-}
-.area-card-meta { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
-.area-chevron { color: var(--text-muted); font-size: 18px; transition: transform 0.25s; flex-shrink: 0; }
-.area-card.open .area-chevron { transform: rotate(180deg); }
-
-/* Progress bar */
-.area-progress {
-  padding: 12px 16px 14px; border-top: 1px solid var(--border); display: none;
-}
-.area-card.open .area-progress { display: block; }
-.progress-bar-track { background: var(--bg3); border-radius: 4px; height: 5px; overflow: hidden; }
-.progress-bar-fill { height: 100%; border-radius: 4px; background: var(--green); transition: width 0.6s ease; }
-.progress-label { font-size: 11px; color: var(--text-muted); margin-top: 5px; }
-
-/* ── Rubros & Items ── */
-.rubros-list { display: none; flex-direction: column; gap: 0; }
-.area-card.open .rubros-list { display: flex; }
-
-.rubro-block { border-top: 1px solid var(--border); }
-.rubro-header { display: flex; align-items: center; gap: 10px; padding: 12px 16px 8px; }
-.rubro-icon-wrap {
-  width: 32px; height: 32px; border-radius: 7px;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; font-size: 17px;
-}
-.rubro-name {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 15px; font-weight: 700; letter-spacing: 0.04em; color: var(--text); flex: 1;
-}
-
-/* ITEMS */
-.items-list { padding: 0 16px 12px 58px; display: flex; flex-direction: column; gap: 6px; }
-.item-row { display: flex; align-items: flex-start; gap: 8px; }
-.item-name { font-size: 12px; color: var(--text-dim); flex: 1; line-height: 1.4; }
-.status-pill {
-  display: flex; align-items: center; gap: 4px; padding: 2px 7px;
-  border-radius: 20px; font-size: 11px; font-weight: 500; white-space: nowrap; flex-shrink: 0;
-}
-.status-pill .dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
-.s0 { background: rgba(85,85,85,0.2); color: var(--gray-state); }
-.s0 .dot { background: var(--gray-state); }
-.s1 { background: rgba(240,147,58,0.15); color: var(--orange); }
-.s1 .dot { background: var(--orange); }
-.s2 { background: rgba(74,158,255,0.15); color: var(--blue); }
-.s2 .dot { background: var(--blue); }
-.s3 { background: rgba(92,219,110,0.15); color: var(--green); }
-.s3 .dot { background: var(--green); }
-
-/* Observaciones */
-.obs-block {
-  margin: 4px 16px 12px 58px;
-  background: rgba(240,147,58,0.08);
-  border-left: 3px solid var(--orange);
-  border-radius: 0 6px 6px 0;
-  padding: 8px 10px;
-}
-.obs-label { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; color: var(--orange); text-transform: uppercase; margin-bottom: 3px; }
-.obs-text { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+/* Hero piso */
+.floor-hero{padding:0 16px;border-bottom:1px solid var(--border)}
+.floor-hero-inner{display:flex;align-items:center;gap:16px;padding:16px 0}
+.floor-hero-icon{width:64px;height:64px;border-radius:14px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:30px;flex-shrink:0;color:var(--green)}
+.floor-hero-text{flex:1}
+.floor-hero-name{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:700;letter-spacing:.02em;line-height:1}
+.floor-hero-sub{font-size:13px;color:var(--muted);margin-top:3px}
+.floor-hero-counter{text-align:right;flex-shrink:0}
+.floor-hero-num{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;color:var(--green);line-height:1}
+.floor-hero-num-label{font-size:10px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-top:2px}
 
 /* Legend */
-.legend {
-  display: flex; gap: 10px; flex-wrap: wrap;
-  padding: 12px 16px; border-bottom: 1px solid var(--border);
-  border-top: 1px solid var(--border); background: var(--bg2);
+.legend{display:flex;gap:12px;flex-wrap:wrap;padding:10px 16px;border-bottom:1px solid var(--border);background:var(--bg2)}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--muted)}
+.legend-dot{width:7px;height:7px;border-radius:50%}
+
+/* Loading */
+.state-box{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 24px;gap:12px;color:var(--muted);font-size:13px;text-align:center}
+.spinner{width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Section label */
+.section-label{padding:14px 16px 8px;font-size:10px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;font-weight:600}
+
+/* ── AREAS GRID 2 columnas ── */
+.areas-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 12px 12px}
+
+.area-card-grid{
+  background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);
+  padding:14px 12px 12px;cursor:pointer;
+  transition:border-color .2s,background .2s;
+  display:flex;flex-direction:column;
 }
-.legend-item { display: flex; align-items: center; gap: 5px; font-size: 10px; color: var(--text-muted); }
-.legend-dot { width: 7px; height: 7px; border-radius: 50%; }
+.area-card-grid:hover{border-color:#3a3a3a;background:#181818}
+.area-card-grid-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:10px;flex-shrink:0}
+.area-card-grid-name{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;letter-spacing:.03em;line-height:1.15;margin-bottom:3px}
+.area-card-grid-meta{font-size:11px;color:var(--muted);margin-bottom:10px}
+.mini-bar-track{background:var(--bg3);border-radius:3px;height:3px;overflow:hidden;margin-bottom:10px}
+.mini-bar-fill{height:100%;border-radius:3px;background:var(--green)}
+.preview-rubros{display:flex;flex-direction:column;gap:5px}
+.preview-rubro-row{display:flex;align-items:center;gap:6px}
+.preview-rubro-name{font-size:11px;color:var(--dim);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.preview-dots{display:flex;gap:3px;flex-shrink:0}
+.pdot{width:8px;height:8px;border-radius:2px}
+
+/* ── DETALLE ── */
+#detail-view{display:none;flex-direction:column}
+.detail-back{display:flex;align-items:center;gap:8px;padding:12px 16px;cursor:pointer;color:var(--muted);font-size:13px;border-bottom:1px solid var(--border);background:var(--bg2);transition:color .2s}
+.detail-back:hover{color:var(--text)}
+.detail-back i{font-size:18px}
+.detail-header{display:flex;align-items:center;gap:12px;padding:16px 16px 14px;border-bottom:1px solid var(--border)}
+.detail-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.detail-name{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;letter-spacing:.03em;line-height:1.1}
+.detail-meta{font-size:11px;color:var(--muted);margin-top:3px}
+.detail-progress-wrap{padding:12px 16px;border-bottom:1px solid var(--border)}
+.detail-bar-track{background:var(--bg3);border-radius:4px;height:5px;overflow:hidden}
+.detail-bar-fill{height:100%;border-radius:4px;background:var(--green);transition:width .6s ease}
+.detail-progress-label{font-size:11px;color:var(--muted);margin-top:5px}
+
+/* Rubros en detalle */
+.rubros-list{display:flex;flex-direction:column}
+.rubro-block{border-top:1px solid var(--border)}
+.rubro-header{display:flex;align-items:center;gap:10px;padding:12px 16px 8px}
+.rubro-icon-wrap{width:32px;height:32px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:17px}
+.rubro-name{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;letter-spacing:.04em;flex:1}
+.items-list{padding:0 16px 12px 58px;display:flex;flex-direction:column;gap:6px}
+.item-row{display:flex;align-items:flex-start;gap:8px}
+.item-name{font-size:12px;color:var(--dim);flex:1;line-height:1.4}
+.status-pill{display:flex;align-items:center;gap:4px;padding:2px 7px;border-radius:20px;font-size:11px;font-weight:500;white-space:nowrap;flex-shrink:0}
+.status-pill .dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.s0{background:rgba(85,85,85,.2);color:var(--gray-s)}.s0 .dot{background:var(--gray-s)}
+.s1{background:rgba(240,147,58,.15);color:var(--orange)}.s1 .dot{background:var(--orange)}
+.s2{background:rgba(74,158,255,.15);color:var(--blue)}.s2 .dot{background:var(--blue)}
+.s3{background:rgba(92,219,110,.15);color:var(--green)}.s3 .dot{background:var(--green)}
+.obs-block{margin:4px 16px 12px 58px;background:rgba(240,147,58,.08);border-left:3px solid var(--orange);border-radius:0 6px 6px 0;padding:8px 10px}
+.obs-label{font-size:10px;font-weight:600;letter-spacing:.08em;color:var(--orange);text-transform:uppercase;margin-bottom:3px}
+.obs-text{font-size:12px;color:var(--dim);line-height:1.5}
+.bottom-spacer{height:32px}
 </style>
 </head>
 <body>
@@ -259,6 +151,7 @@ body {
 
 <!-- APP -->
 <div id="app">
+
   <header class="header">
     <img class="header-logo"
       src="https://raw.githubusercontent.com/Georggio/gran-verona-/main/guten_logo.jpg"
@@ -271,500 +164,529 @@ body {
     <div class="floor-badge" id="floor-badge">—</div>
   </header>
 
-  <div class="legend">
-    <div class="legend-item"><div class="legend-dot" style="background:#555"></div>Por comenzar</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#f0933a"></div>En ejecución</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#4a9eff"></div>Parcialmente finalizado</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#5cdb6e"></div>Finalizado y aprobado</div>
+  <!-- VISTA GRILLA -->
+  <div id="grid-view">
+    <div class="floor-hero">
+      <div class="floor-hero-inner">
+        <div class="floor-hero-icon" id="hero-icon"><i class="ti ti-building"></i></div>
+        <div class="floor-hero-text">
+          <div class="floor-hero-name" id="floor-name">—</div>
+          <div class="floor-hero-sub"  id="floor-sub"></div>
+        </div>
+        <div class="floor-hero-counter">
+          <div class="floor-hero-num"        id="hero-counter">—</div>
+          <div class="floor-hero-num-label">Finalizados</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#555"></div>Por comenzar</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#f0933a"></div>En ejecución</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#4a9eff"></div>Parcial</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#5cdb6e"></div>Aprobado</div>
+    </div>
+
+    <div id="grid-content">
+      <div class="state-box"><div class="spinner"></div><span>Conectando con Google Sheets…</span></div>
+    </div>
   </div>
 
-  <div class="floor-hero">
-    <div class="floor-hero-name" id="floor-name">—</div>
-    <div class="floor-hero-sub" id="floor-sub"></div>
+  <!-- VISTA DETALLE -->
+  <div id="detail-view">
+    <div class="detail-back" id="detail-back-btn">
+      <i class="ti ti-arrow-left"></i>
+      <span id="detail-back-label">Volver</span>
+    </div>
+    <div class="detail-header">
+      <div class="detail-icon" id="detail-icon"></div>
+      <div>
+        <div class="detail-name" id="detail-name"></div>
+        <div class="detail-meta" id="detail-meta"></div>
+      </div>
+    </div>
+    <div class="detail-progress-wrap">
+      <div class="detail-bar-track"><div class="detail-bar-fill" id="detail-bar" style="width:0%"></div></div>
+      <div class="detail-progress-label" id="detail-progress-label"></div>
+    </div>
+    <div class="rubros-list" id="detail-rubros"></div>
+    <div class="bottom-spacer"></div>
   </div>
 
-  <!-- Grilla de departamentos (se muestra sólo en pisos con deptos) -->
-  <div id="deptos-section" style="display:none"></div>
-
-  <div id="content">
-    <div class="state-box"><div class="spinner"></div><span>Conectando con Google Sheets…</span></div>
-  </div>
 </div>
 
 <script>
-// ── CONFIG ────────────────────────────────────────────────────
+/* ═══════════════════════════════════════
+   CONFIG
+═══════════════════════════════════════ */
 const SHEET_ID = '1sSSKaxSSfakE8b5LJPW0YPNtbjO4Lpr7IkzFqycEAt0';
 const PASSWORD = 'gv2027';
 
 const FLOORS = {
-  subsuelo: { name: 'SUBSUELO',    sub: 'Cocheras',                       hasDeptos: false },
-  pb:       { name: 'PLANTA BAJA', sub: 'Locales Comerciales',            hasDeptos: false },
-  entre:    { name: 'ENTREPISO',   sub: 'Locales Comerciales',            hasDeptos: false },
-  p1:       { name: 'PISO 1',      sub: '7 Departamentos',                hasDeptos: true  },
-  p2:       { name: 'PISO 2',      sub: '7 Departamentos',                hasDeptos: true  },
-  p3:       { name: 'PISO 3',      sub: '7 Departamentos',                hasDeptos: true  },
-  p4:       { name: 'PISO 4',      sub: '7 Departamentos',                hasDeptos: true  },
-  p5:       { name: 'PISO 5',      sub: '7 Departamentos',                hasDeptos: true  },
-  p6:       { name: 'PISO 6',      sub: '7 Departamentos',                hasDeptos: true  },
-  p7:       { name: 'PISO 7',      sub: '7 Departamentos',                hasDeptos: true  },
-  p8:       { name: 'PISO 8',      sub: '7 Departamentos',                hasDeptos: true  },
-  p9:       { name: 'PISO 9',      sub: '7 Departamentos',                hasDeptos: true  },
-  terraza:  { name: 'TERRAZA',     sub: 'Quincho · Parrillero · Pileta · Solarium', hasDeptos: false },
+  subsuelo:{ name:'SUBSUELO',    sub:'Cocheras',                                 icon:'ti-car-garage'     },
+  pb:      { name:'PLANTA BAJA', sub:'Locales Comerciales',                      icon:'ti-building-store' },
+  entre:   { name:'ENTREPISO',   sub:'Locales Comerciales',                      icon:'ti-building-store' },
+  p1:      { name:'PISO 1',      sub:'7 Departamentos',                          icon:'ti-building'       },
+  p2:      { name:'PISO 2',      sub:'7 Departamentos',                          icon:'ti-building'       },
+  p3:      { name:'PISO 3',      sub:'7 Departamentos',                          icon:'ti-building'       },
+  p4:      { name:'PISO 4',      sub:'7 Departamentos',                          icon:'ti-building'       },
+  p5:      { name:'PISO 5',      sub:'7 Departamentos',                          icon:'ti-building'       },
+  p6:      { name:'PISO 6',      sub:'7 Departamentos',                          icon:'ti-building'       },
+  p7:      { name:'PISO 7',      sub:'7 Departamentos',                          icon:'ti-building'       },
+  p8:      { name:'PISO 8',      sub:'7 Departamentos',                          icon:'ti-building'       },
+  p9:      { name:'PISO 9',      sub:'7 Departamentos',                          icon:'ti-building'       },
+  terraza: { name:'TERRAZA',     sub:'Quincho · Parrillero · Pileta · Solarium', icon:'ti-pool'           },
 };
 
-// ── ICONOS: 1 ícono único por rubro, normalizado sin tildes ──
-// La clave es el nombre del rubro en minúsculas, sin tildes, para matching robusto
+/* ── Ícono por ÁREA (nombre del espacio en la hoja) ── */
+const AREA_ICONS = {
+  // departamentos
+  'depto':           { icon:'ti-home',            color:'#e07070', bg:'rgba(224,112,112,0.18)' },
+  'departamento':    { icon:'ti-home',            color:'#e07070', bg:'rgba(224,112,112,0.18)' },
+  // circulaciones y estructura
+  'hall':            { icon:'ti-door-enter',       color:'#80c8f0', bg:'rgba(128,200,240,0.15)' },
+  'nucleo':          { icon:'ti-stairs',           color:'#a0d090', bg:'rgba(160,208,144,0.15)' },
+  'escalera':        { icon:'ti-stairs',           color:'#a0d090', bg:'rgba(160,208,144,0.15)' },
+  'circulacion':     { icon:'ti-route',            color:'#90b8e0', bg:'rgba(144,184,224,0.15)' },
+  'pasillo':         { icon:'ti-route',            color:'#90b8e0', bg:'rgba(144,184,224,0.15)' },
+  'ascensor':        { icon:'ti-elevator',         color:'#b0a0d8', bg:'rgba(176,160,216,0.15)' },
+  // cocheras / subsuelo
+  'cochera':         { icon:'ti-car-garage',       color:'#c0b080', bg:'rgba(192,176,128,0.15)' },
+  'estacionamiento': { icon:'ti-car-garage',       color:'#c0b080', bg:'rgba(192,176,128,0.15)' },
+  'baulera':         { icon:'ti-archive',          color:'#b0b080', bg:'rgba(176,176,128,0.15)' },
+  'deposito':        { icon:'ti-package',          color:'#b0b080', bg:'rgba(176,176,128,0.15)' },
+  // locales
+  'local':           { icon:'ti-building-store',   color:'#f0b060', bg:'rgba(240,176,96,0.15)'  },
+  'comercial':       { icon:'ti-building-store',   color:'#f0b060', bg:'rgba(240,176,96,0.15)'  },
+  // amenities
+  'pileta':          { icon:'ti-pool',             color:'#60c8e8', bg:'rgba(96,200,232,0.15)'  },
+  'natacion':        { icon:'ti-pool',             color:'#60c8e8', bg:'rgba(96,200,232,0.15)'  },
+  'quincho':         { icon:'ti-grill',            color:'#e09060', bg:'rgba(224,144,96,0.15)'  },
+  'parrillero':      { icon:'ti-grill',            color:'#e09060', bg:'rgba(224,144,96,0.15)'  },
+  'parrilla':        { icon:'ti-grill',            color:'#e09060', bg:'rgba(224,144,96,0.15)'  },
+  'terraza':         { icon:'ti-sun',              color:'#f0d060', bg:'rgba(240,208,96,0.15)'  },
+  'azotea':          { icon:'ti-sun',              color:'#f0d060', bg:'rgba(240,208,96,0.15)'  },
+  'solarium':        { icon:'ti-sun',              color:'#f0d060', bg:'rgba(240,208,96,0.15)'  },
+  'gimnasio':        { icon:'ti-barbell',          color:'#80e0a0', bg:'rgba(128,224,160,0.15)' },
+  'salon':          { icon:'ti-sofa',             color:'#c090d0', bg:'rgba(192,144,208,0.15)' },
+  'sala':            { icon:'ti-sofa',             color:'#c090d0', bg:'rgba(192,144,208,0.15)' },
+  'sum':             { icon:'ti-sofa',             color:'#c090d0', bg:'rgba(192,144,208,0.15)' },
+  'lavadero':        { icon:'ti-wash-machine',     color:'#80c0f0', bg:'rgba(128,192,240,0.15)' },
+  // estructura / fachada
+  'medianera':       { icon:'ti-wall',             color:'#b89c6e', bg:'rgba(184,156,110,0.15)' },
+  'fachada':         { icon:'ti-building-arch',    color:'#c0a8e0', bg:'rgba(192,168,224,0.15)' },
+  'losa':            { icon:'ti-square',           color:'#a0a8c0', bg:'rgba(160,168,192,0.15)' },
+  'tanque':          { icon:'ti-droplet',          color:'#5baae0', bg:'rgba(91,170,224,0.15)'  },
+  'cisterna':        { icon:'ti-droplet',          color:'#5baae0', bg:'rgba(91,170,224,0.15)'  },
+  'cuarto':          { icon:'ti-tool',             color:'#b08060', bg:'rgba(176,128,96,0.15)'  },
+  'maquina':         { icon:'ti-engine',           color:'#9090b0', bg:'rgba(144,144,176,0.15)' },
+  'instalacion':     { icon:'ti-plug',             color:'#f0d060', bg:'rgba(240,208,96,0.15)'  },
+  // fallback
+  'default':         { icon:'ti-layout-grid',      color:'#888888', bg:'rgba(136,136,136,0.12)' },
+};
+
+/* ── Ícono por RUBRO (lo que se hace dentro del área) ── */
 const RUBRO_ICONS = {
-  'yeseria':               { icon: 'ti-wall',             color: '#b89c6e', bg: 'rgba(184,156,110,0.15)' },
-  'aberturas de aluminio': { icon: 'ti-door',             color: '#6eb8e0', bg: 'rgba(110,184,224,0.15)' },
-  'aberturas interiores':  { icon: 'ti-window',           color: '#a0c4e8', bg: 'rgba(160,196,232,0.15)' },
-  'pisos':                 { icon: 'ti-layers-intersect', color: '#c8a96e', bg: 'rgba(200,169,110,0.15)' },
-  'revestimientos':        { icon: 'ti-stack-2',          color: '#9b8fc0', bg: 'rgba(155,143,192,0.15)' },
-  'zocalos':               { icon: 'ti-ruler-2',          color: '#80bfa0', bg: 'rgba(128,191,160,0.15)' },
-  'instalacion cloacal':   { icon: 'ti-git-branch',       color: '#6db8a8', bg: 'rgba(109,184,168,0.15)' },
-  'instalaciones sanitarias': { icon: 'ti-droplet',       color: '#5baae0', bg: 'rgba(91,170,224,0.15)' },
-  'instalacion de gas':    { icon: 'ti-flame',            color: '#e08050', bg: 'rgba(224,128,80,0.15)' },
-  'instalacion electrica': { icon: 'ti-plug',             color: '#f0d060', bg: 'rgba(240,208,96,0.15)' },
-  'preinstalacion aa':     { icon: 'ti-wind',             color: '#80d0d8', bg: 'rgba(128,208,216,0.15)' },
-  'amoblamientos':         { icon: 'ti-armchair',         color: '#c08878', bg: 'rgba(192,136,120,0.15)' },
-  'pintura':               { icon: 'ti-brush',            color: '#d490c0', bg: 'rgba(212,144,192,0.15)' },
-  'carpinteria':           { icon: 'ti-hammer',           color: '#c8a060', bg: 'rgba(200,160,96,0.15)' },
-  'hormigon':              { icon: 'ti-cube',             color: '#9090a0', bg: 'rgba(144,144,160,0.15)' },
-  'impermeabilizacion':    { icon: 'ti-shield',           color: '#70b8d8', bg: 'rgba(112,184,216,0.15)' },
-  'escaleras':             { icon: 'ti-stairs',           color: '#a8c890', bg: 'rgba(168,200,144,0.15)' },
-  'ascensor':              { icon: 'ti-elevator',         color: '#b0a0d8', bg: 'rgba(176,160,216,0.15)' },
-  'cielorrasos':           { icon: 'ti-border-top',       color: '#c0b898', bg: 'rgba(192,184,152,0.15)' },
-  'solados':               { icon: 'ti-layout-grid',      color: '#b8c8a0', bg: 'rgba(184,200,160,0.15)' },
-  'estructura':            { icon: 'ti-building',         color: '#9898b8', bg: 'rgba(152,152,184,0.15)' },
-  'mamposteria':           { icon: 'ti-layout-sidebar',   color: '#c0a880', bg: 'rgba(192,168,128,0.15)' },
-  'contrapisos':           { icon: 'ti-layer-difference', color: '#a8b8a0', bg: 'rgba(168,184,160,0.15)' },
-  'aislaciones':           { icon: 'ti-barrier-block',    color: '#d0b068', bg: 'rgba(208,176,104,0.15)' },
-  'sanitarios':            { icon: 'ti-bath',             color: '#78c0d0', bg: 'rgba(120,192,208,0.15)' },
-  'cocina':                { icon: 'ti-tool',             color: '#c89870', bg: 'rgba(200,152,112,0.15)' },
-  // fallback único — diferente de todos los anteriores
-  'default':               { icon: 'ti-category',         color: '#888888', bg: 'rgba(136,136,136,0.12)' },
+  'yeseria':                  { icon:'ti-wall',             color:'#b89c6e', bg:'rgba(184,156,110,0.15)' },
+  'aberturas de aluminio':    { icon:'ti-door',             color:'#6eb8e0', bg:'rgba(110,184,224,0.15)' },
+  'aberturas interiores':     { icon:'ti-window',           color:'#a0c4e8', bg:'rgba(160,196,232,0.15)' },
+  'pisos':                    { icon:'ti-layers-intersect', color:'#c8a96e', bg:'rgba(200,169,110,0.15)' },
+  'revestimientos':           { icon:'ti-stack-2',          color:'#9b8fc0', bg:'rgba(155,143,192,0.15)' },
+  'zocalos':                  { icon:'ti-ruler-2',          color:'#80bfa0', bg:'rgba(128,191,160,0.15)' },
+  'instalacion cloacal':      { icon:'ti-git-branch',       color:'#6db8a8', bg:'rgba(109,184,168,0.15)' },
+  'instalaciones sanitarias': { icon:'ti-droplet',          color:'#5baae0', bg:'rgba(91,170,224,0.15)'  },
+  'instalacion de gas':       { icon:'ti-flame',            color:'#e08050', bg:'rgba(224,128,80,0.15)'  },
+  'instalacion electrica':    { icon:'ti-plug',             color:'#f0d060', bg:'rgba(240,208,96,0.15)'  },
+  'preinstalacion aa':        { icon:'ti-wind',             color:'#80d0d8', bg:'rgba(128,208,216,0.15)' },
+  'amoblamientos':            { icon:'ti-armchair',         color:'#c08878', bg:'rgba(192,136,120,0.15)' },
+  'pintura':                  { icon:'ti-brush',            color:'#d490c0', bg:'rgba(212,144,192,0.15)' },
+  'carpinteria':              { icon:'ti-hammer',           color:'#c8a060', bg:'rgba(200,160,96,0.15)'  },
+  'hormigon':                 { icon:'ti-cube',             color:'#9090a0', bg:'rgba(144,144,160,0.15)' },
+  'impermeabilizacion':       { icon:'ti-shield',           color:'#70b8d8', bg:'rgba(112,184,216,0.15)' },
+  'escaleras':                { icon:'ti-stairs',           color:'#a8c890', bg:'rgba(168,200,144,0.15)' },
+  'ascensor':                 { icon:'ti-elevator',         color:'#b0a0d8', bg:'rgba(176,160,216,0.15)' },
+  'cielorrasos':              { icon:'ti-border-top',       color:'#c0b898', bg:'rgba(192,184,152,0.15)' },
+  'solados':                  { icon:'ti-layout-grid',      color:'#b8c8a0', bg:'rgba(184,200,160,0.15)' },
+  'estructura':               { icon:'ti-building',         color:'#9898b8', bg:'rgba(152,152,184,0.15)' },
+  'mamposteria':              { icon:'ti-layout-sidebar',   color:'#c0a880', bg:'rgba(192,168,128,0.15)' },
+  'contrapisos':              { icon:'ti-layer-difference', color:'#a8b8a0', bg:'rgba(168,184,160,0.15)' },
+  'aislaciones':              { icon:'ti-barrier-block',    color:'#d0b068', bg:'rgba(208,176,104,0.15)' },
+  'sanitarios':               { icon:'ti-bath',             color:'#78c0d0', bg:'rgba(120,192,208,0.15)' },
+  'cocina':                   { icon:'ti-tool',             color:'#c89870', bg:'rgba(200,152,112,0.15)' },
+  'herreria':                 { icon:'ti-fence',            color:'#a0a8b8', bg:'rgba(160,168,184,0.15)' },
+  'vidrios':                  { icon:'ti-square',           color:'#90d0e8', bg:'rgba(144,208,232,0.15)' },
+  'pluviales':                { icon:'ti-cloud-rain',       color:'#70a8d8', bg:'rgba(112,168,216,0.15)' },
+  'incendio':                 { icon:'ti-flame',            color:'#e05050', bg:'rgba(224,80,80,0.15)'   },
+  'default':                  { icon:'ti-category',         color:'#888888', bg:'rgba(136,136,136,0.12)' },
 };
 
-// Nombres de cabecera a ignorar al parsear
-const HEADER_KEYWORDS = ['área', 'area', 'rubro', 'item', 'ítem', 'estado', 'observ'];
+const STATUS_LABELS = ['Por comenzar','En ejecución','Finalizado parcialmente','Finalizado y aprobado'];
+const DOT_COLORS    = ['#555','#f0933a','#4a9eff','#5cdb6e'];
+const HEADER_KW     = ['área','area','rubro','item','ítem','estado','observ','espacio'];
 
-const STATUS_LABELS = ['Por comenzar', 'En ejecución', 'Finalizado parcialmente', 'Finalizado y aprobado'];
-
-// ── UTILS ─────────────────────────────────────────────────────
-// Normaliza texto: minúsculas, sin tildes, sin puntuación extra
-function norm(s) {
-  return (s || '')
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')   // quita tildes/diacríticos
-    .replace(/[^a-z0-9\s]/g, '')       // quita puntuación
-    .trim();
+/* ═══════════════════════════════════════
+   UTILS
+═══════════════════════════════════════ */
+function norm(s){
+  return (s||'').toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/[^a-z0-9\s]/g,'').trim();
+}
+function isHeaderRow(row){
+  const j=norm(row.join(' '));
+  return HEADER_KW.some(k=>j===k||j.startsWith(k+' '));
+}
+function getAreaStyle(name){
+  const key=norm(name);
+  if(AREA_ICONS[key]) return AREA_ICONS[key];
+  for(const k in AREA_ICONS){
+    if(k==='default') continue;
+    if(key.includes(k)) return AREA_ICONS[k];
+  }
+  return AREA_ICONS['default'];
+}
+function getRubroStyle(name){
+  const key=norm(name);
+  if(RUBRO_ICONS[key]) return RUBRO_ICONS[key];
+  for(const k in RUBRO_ICONS){
+    if(k==='default') continue;
+    if(key.includes(k)||k.includes(key)) return RUBRO_ICONS[k];
+  }
+  return RUBRO_ICONS['default'];
+}
+function calcStats(rubros){
+  let total=0,done=0,aprobados=0;
+  for(const r of rubros) for(const it of r.items){
+    total++; done+=it.status; if(it.status===3) aprobados++;
+  }
+  return {total,aprobados,pct:total===0?0:Math.round((done/(total*3))*100)};
 }
 
-function isHeaderRow(row) {
-  const joined = norm(row.join(' '));
-  return HEADER_KEYWORDS.some(k => joined.includes(k));
-}
-
-// ── AUTH ──────────────────────────────────────────────────────
-function checkAuth() { return sessionStorage.getItem('gv_auth') === '1'; }
-
-document.getElementById('login-btn').addEventListener('click', tryLogin);
-document.getElementById('pw-input').addEventListener('keydown', e => { if (e.key === 'Enter') tryLogin(); });
-
-function tryLogin() {
-  const val = document.getElementById('pw-input').value.trim().toLowerCase();
-  if (val === PASSWORD) {
-    sessionStorage.setItem('gv_auth', '1');
-    document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('app').style.display = 'block';
+/* ═══════════════════════════════════════
+   AUTH
+═══════════════════════════════════════ */
+function checkAuth(){ return sessionStorage.getItem('gv_auth')==='1'; }
+document.getElementById('login-btn').addEventListener('click',tryLogin);
+document.getElementById('pw-input').addEventListener('keydown',e=>{ if(e.key==='Enter') tryLogin(); });
+function tryLogin(){
+  const val=document.getElementById('pw-input').value.trim().toLowerCase();
+  if(val===PASSWORD){
+    sessionStorage.setItem('gv_auth','1');
+    document.getElementById('login-screen').style.display='none';
+    document.getElementById('app').style.display='block';
     initApp();
   } else {
-    const input = document.getElementById('pw-input');
-    const err   = document.getElementById('login-error');
-    input.classList.remove('shake');
-    void input.offsetWidth;
-    input.classList.add('shake');
-    err.textContent = 'Clave incorrecta. Intentá nuevamente.';
-    input.value = '';
-    setTimeout(() => { input.classList.remove('shake'); err.textContent = ''; }, 2000);
+    const inp=document.getElementById('pw-input');
+    const err=document.getElementById('login-error');
+    inp.classList.remove('shake'); void inp.offsetWidth; inp.classList.add('shake');
+    err.textContent='Clave incorrecta. Intentá nuevamente.'; inp.value='';
+    setTimeout(()=>{ inp.classList.remove('shake'); err.textContent=''; },2000);
   }
 }
 
-// ── FLOOR ─────────────────────────────────────────────────────
-function getFloorId() {
-  const params = new URLSearchParams(window.location.search);
-  const p = params.get('piso') || 'p1';
-  return FLOORS[p] ? p : 'p1';
+/* ═══════════════════════════════════════
+   FLOOR + INIT
+═══════════════════════════════════════ */
+function getFloorId(){
+  const p=new URLSearchParams(window.location.search).get('piso')||'p1';
+  return FLOORS[p]?p:'p1';
+}
+let currentFloorId='';
+let allAreas=[];
+
+function initApp(){
+  currentFloorId=getFloorId();
+  const floor=FLOORS[currentFloorId];
+  document.getElementById('floor-badge').textContent=floor.name;
+  document.getElementById('floor-name').textContent=floor.name;
+  document.getElementById('floor-sub').textContent=floor.sub;
+  document.getElementById('hero-icon').innerHTML=`<i class="ti ${floor.icon}"></i>`;
+  loadSheet(currentFloorId);
 }
 
-// Estado global del depto seleccionado
-let allAreas = [];   // todos los datos parseados [{name, rubros}]
-let selectedDepto = null;
-
-function initApp() {
-  const floorId = getFloorId();
-  const floor   = FLOORS[floorId];
-  document.getElementById('floor-badge').textContent = floor.name;
-  document.getElementById('floor-name').textContent  = floor.name;
-  document.getElementById('floor-sub').textContent   = floor.sub;
-  loadSheet(floorId, floor.hasDeptos);
+/* ═══════════════════════════════════════
+   DATA
+═══════════════════════════════════════ */
+async function loadSheet(floorId){
+  const gc=document.getElementById('grid-content');
+  gc.innerHTML='<div class="state-box"><div class="spinner"></div><span>Conectando con Google Sheets…</span></div>';
+  const sn=encodeURIComponent(floorId);
+  try{
+    const r=await fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${sn}`);
+    if(r.ok){ const t=await r.text(); if(t&&t.length>10&&!t.startsWith('<!')){ processData(parseCSV(t)); return; } }
+  }catch(e){}
+  try{
+    const gid=await getGid(floorId);
+    const r=await fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&sheet=${sn}${gid?'&gid='+gid:''}`);
+    if(r.ok){ const t=await r.text(); if(t&&t.length>10){ processData(parseCSV(t)); return; } }
+  }catch(e){}
+  gc.innerHTML='<div class="state-box"><i class="ti ti-wifi-off" style="font-size:32px;color:#555"></i><span>No se pudo conectar.<br>Verificá que la hoja esté publicada.</span></div>';
 }
 
-// ── DATA ──────────────────────────────────────────────────────
-async function loadSheet(floorId, hasDeptos) {
-  const content = document.getElementById('content');
-  content.innerHTML = '<div class="state-box"><div class="spinner"></div><span>Conectando con Google Sheets…</span></div>';
+async function getGid(name){
+  try{
+    const r=await fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/edit`);
+    const t=await r.text();
+    const m=t.match(new RegExp(`"${name}"[^}]*"sheetId":(\\d+)`));
+    return m?m[1]:null;
+  }catch(e){ return null; }
+}
 
-  const sheetName = encodeURIComponent(floorId);
-
-  try {
-    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${sheetName}`;
-    const res = await fetch(url);
-    if (res.ok) {
-      const text = await res.text();
-      if (text && text.length > 10 && !text.startsWith('<!')) {
-        processData(parseCSV(text), content, hasDeptos);
-        return;
-      }
+function parseCSV(text){
+  const rows=[];
+  for(const line of text.split('\n')){
+    const row=[];let inQ=false,cur='';
+    for(let i=0;i<line.length;i++){
+      if(line[i]==='"'){inQ=!inQ;}
+      else if(line[i]===','&&!inQ){row.push(cur.trim());cur='';}
+      else{cur+=line[i];}
     }
-  } catch(e) {}
-
-  try {
-    const gid = await getGid(floorId);
-    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&sheet=${sheetName}${gid ? '&gid='+gid : ''}`;
-    const res = await fetch(url);
-    if (res.ok) {
-      const text = await res.text();
-      if (text && text.length > 10) {
-        processData(parseCSV(text), content, hasDeptos);
-        return;
-      }
-    }
-  } catch(e) {}
-
-  content.innerHTML = '<div class="state-box"><i class="ti ti-wifi-off" style="font-size:32px;color:#555"></i><span>No se pudo conectar con Google Sheets.<br>Verificá que la hoja esté publicada y compartida.</span></div>';
-}
-
-async function getGid(sheetName) {
-  try {
-    const res  = await fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/edit`);
-    const text = await res.text();
-    const match = text.match(new RegExp(`"${sheetName}"[^}]*"sheetId":(\\d+)`));
-    return match ? match[1] : null;
-  } catch(e) { return null; }
-}
-
-function parseCSV(text) {
-  const rows = [];
-  const lines = text.split('\n');
-  for (const line of lines) {
-    const row = [];
-    let inQ = false, cur = '';
-    for (let i = 0; i < line.length; i++) {
-      if (line[i] === '"')             { inQ = !inQ; }
-      else if (line[i] === ',' && !inQ) { row.push(cur.trim()); cur = ''; }
-      else                              { cur += line[i]; }
-    }
-    row.push(cur.trim());
-    rows.push(row);
+    row.push(cur.trim());rows.push(row);
   }
   return rows;
 }
 
-// ── PARSE ─────────────────────────────────────────────────────
-function parseRows(rows) {
-  // Buscar fila de encabezado para saber dónde empieza la data
-  let dataStart = -1;
-  for (let i = 0; i < rows.length; i++) {
-    if (isHeaderRow(rows[i])) { dataStart = i + 1; break; }
+/* ═══════════════════════════════════════
+   PARSE
+═══════════════════════════════════════ */
+function parseRows(rows){
+  let start=-1;
+  for(let i=0;i<rows.length;i++){
+    if(isHeaderRow(rows[i])){ start=i+1; break; }
   }
-  if (dataStart === -1) {
-    for (let i = 0; i < rows.length; i++) {
-      if (rows[i].filter(c => c.trim().length > 0).length >= 3) { dataStart = i; break; }
+  if(start===-1){
+    for(let i=0;i<rows.length;i++){
+      if(rows[i].filter(c=>c.trim().length>0).length>=3){ start=i; break; }
     }
   }
-  if (dataStart === -1) return [];
+  if(start===-1) return [];
 
-  // Detectar offset de columna (columna A suele estar vacía)
-  let colOffset = 0;
-  for (let i = dataStart; i < Math.min(dataStart + 5, rows.length); i++) {
-    for (let c = 0; c < rows[i].length; c++) {
-      if (rows[i][c].trim().length > 0) { colOffset = c; break; }
+  let off=0;
+  for(let i=start;i<Math.min(start+5,rows.length);i++){
+    for(let c=0;c<rows[i].length;c++){
+      if(rows[i][c].trim().length>0){ off=c; break; }
     }
-    if (colOffset > 0) break;
+    if(off>0) break;
   }
 
-  const areas     = {};
-  const areaOrder = [];
-  const rubroOrder = {};
-  let lastArea = '', lastRubro = '';
+  const areas={},areaOrder=[],rubroOrder={};
+  let lastA='',lastR='';
 
-  for (let i = dataStart; i < rows.length; i++) {
-    const row = rows[i];
-    if (!row || row.length < colOffset + 3) continue;
+  for(let i=start;i<rows.length;i++){
+    const row=rows[i];
+    if(!row||row.length<off+3) continue;
+    const area  =(row[off]  ||'').trim();
+    const rubro =(row[off+1]||'').trim();
+    const item  =(row[off+2]||'').trim();
+    const estado=(row[off+3]||'').trim();
+    const obs   =(row[off+4]||'').trim();
 
-    const area   = (row[colOffset]     || '').trim();
-    const rubro  = (row[colOffset + 1] || '').trim();
-    const item   = (row[colOffset + 2] || '').trim();
-    const estado = (row[colOffset + 3] || '').trim();
-    const obs    = (row[colOffset + 4] || '').trim();
+    if(!item) continue;
+    if(isHeaderRow([area,rubro,item,estado])) continue;
 
-    if (!item) continue;
+    if(area)  lastA=area;
+    if(rubro) lastR=rubro;
+    const a=lastA||'(Sin área)';
+    const r=lastR||'(Sin rubro)';
 
-    // Saltar filas que son cabeceras repetidas (celdas con "área", "rubro", etc.)
-    if (isHeaderRow([area, rubro, item, estado])) continue;
+    // Saltar filas que son la fila-cabecera "Área / Espacio"
+    const aN=norm(a);
+    if(aN==='area'||aN==='area espacio'||aN==='espacio') continue;
 
-    if (area)  lastArea  = area;
-    if (rubro) lastRubro = rubro;
-
-    const a = lastArea  || '(Sin área)';
-    const r = lastRubro || '(Sin rubro)';
-
-    // FIX: ignorar el área si su nombre normalizado contiene "area" o "espacio"
-    // (esto filtra la fila de encabezado que se coló como área)
-    const aNorm = norm(a);
-    if (aNorm === 'area' || aNorm === 'area espacio' || aNorm.startsWith('area ')) continue;
-
-    if (!areas[a]) { areas[a] = { rubros: {} }; areaOrder.push(a); }
-    if (!areas[a].rubros[r]) {
-      areas[a].rubros[r] = { items: [] };
-      if (!rubroOrder[a]) rubroOrder[a] = [];
+    if(!areas[a]){ areas[a]={rubros:{}}; areaOrder.push(a); }
+    if(!areas[a].rubros[r]){
+      areas[a].rubros[r]={items:[]};
+      if(!rubroOrder[a]) rubroOrder[a]=[];
       rubroOrder[a].push(r);
     }
-
-    areas[a].rubros[r].items.push({ name: item, status: parseStatus(estado), obs });
+    areas[a].rubros[r].items.push({name:item,status:parseStatus(estado),obs});
   }
 
-  return areaOrder.map(a => ({
-    name:   a,
-    rubros: (rubroOrder[a] || []).map(r => ({
-      name:  r,
-      items: areas[a].rubros[r].items,
-    })),
+  return areaOrder.map(a=>({
+    name:a,
+    rubros:(rubroOrder[a]||[]).map(r=>({name:r,items:areas[a].rubros[r].items}))
   }));
 }
 
-function parseStatus(s) {
-  s = norm(s);
-  if (!s || s === '0' || s.includes('comen') || s.includes('pronto') || s.includes('por')) return 0;
-  if (s === '1' || s.includes('ejecuc') || s.includes('proceso')) return 1;
-  if (s === '2' || s.includes('parcial')) return 2;
-  if (s === '3' || s.includes('finaliz') || s.includes('aprobad')) return 3;
+function parseStatus(s){
+  s=norm(s);
+  if(!s||s==='0'||s.includes('comen')||s.includes('por')) return 0;
+  if(s==='1'||s.includes('ejecuc')||s.includes('proceso')) return 1;
+  if(s==='2'||s.includes('parcial')) return 2;
+  if(s==='3'||s.includes('finaliz')||s.includes('aprobad')) return 3;
   return 0;
 }
+function getStatusClass(s){ return ['s0','s1','s2','s3'][s]||'s0'; }
 
-function getStatusClass(s) { return ['s0','s1','s2','s3'][s] || 's0'; }
-
-function calcProgress(rubros) {
-  let total = 0, done = 0;
-  for (const r of rubros) for (const it of r.items) { total++; done += it.status; }
-  return total === 0 ? 0 : Math.round((done / (total * 3)) * 100);
-}
-
-function getRubroStyle(rubroName) {
-  const key = norm(rubroName);
-  if (RUBRO_ICONS[key]) return RUBRO_ICONS[key];
-  // Partial match: clave contenida en el nombre o vice-versa
-  for (const k in RUBRO_ICONS) {
-    if (k === 'default') continue;
-    if (key.includes(k) || k.includes(key)) return RUBRO_ICONS[k];
-  }
-  return RUBRO_ICONS['default'];
-}
-
-// ── PROCESS (depto vs área simple) ────────────────────────────
-function processData(rows, container, hasDeptos) {
-  allAreas = parseRows(rows);
-
-  if (!allAreas.length) {
-    container.innerHTML = '<div class="state-box"><i class="ti ti-database-off" style="font-size:32px;color:#555"></i><span>Sin datos en esta hoja.<br>Verificá la estructura de columnas.</span></div>';
+/* ═══════════════════════════════════════
+   PROCESS
+═══════════════════════════════════════ */
+function processData(rows){
+  allAreas=parseRows(rows);
+  if(!allAreas.length){
+    document.getElementById('grid-content').innerHTML='<div class="state-box"><i class="ti ti-database-off" style="font-size:32px;color:#555"></i><span>Sin datos en esta hoja.</span></div>';
     return;
   }
-
-  if (hasDeptos) {
-    // Separar áreas comunes (Hall del piso, etc.) de departamentos
-    const deptos  = allAreas.filter(a => norm(a.name).startsWith('depto') || norm(a.name).startsWith('departamento') || /^\d+[a-z]?$/.test(norm(a.name)));
-    const comunes = allAreas.filter(a => !deptos.includes(a));
-
-    renderDeptosGrid(deptos, comunes, container);
-  } else {
-    renderAreas(allAreas, container);
-  }
+  updateHeroCounter();
+  renderGrid();
 }
 
-// ── RENDER DEPTOS GRID ────────────────────────────────────────
-function renderDeptosGrid(deptos, comunes, container) {
-  const section = document.getElementById('deptos-section');
-  section.style.display = 'block';
-  section.innerHTML = '';
-
-  if (deptos.length === 0) {
-    // No hay áreas con nombre "Depto X", mostrar todo directamente
-    renderAreas(allAreas, container);
-    return;
+function updateHeroCounter(){
+  let aprobados=0,total=0;
+  for(const a of allAreas) for(const r of a.rubros) for(const it of r.items){
+    total++; if(it.status===3) aprobados++;
   }
-
-  const grid = document.createElement('div');
-  grid.className = 'deptos-grid';
-
-  // Chip "Áreas Comunes" si existen
-  if (comunes.length > 0) {
-    const chip = document.createElement('div');
-    chip.className = 'depto-chip' + (selectedDepto === '__comunes__' ? ' active' : '');
-    chip.innerHTML = `<div class="depto-chip-num" style="font-size:13px">COMÚN</div><div class="depto-chip-label">Áreas</div>`;
-    chip.addEventListener('click', () => {
-      selectedDepto = '__comunes__';
-      updateChips(grid);
-      renderAreas(comunes, container);
-    });
-    grid.appendChild(chip);
-  }
-
-  for (const depto of deptos) {
-    const chip = document.createElement('div');
-    const label = depto.name;
-    // Extraer número del nombre ("Depto 1A" → "1A")
-    const numMatch = label.match(/(\d+\s*[a-zA-Z]?)$/);
-    const num = numMatch ? numMatch[1].trim() : label;
-
-    chip.className = 'depto-chip' + (selectedDepto === label ? ' active' : '');
-    chip.dataset.key = label;
-    chip.innerHTML = `<div class="depto-chip-num">${num}</div><div class="depto-chip-label">Depto</div>`;
-    chip.addEventListener('click', () => {
-      selectedDepto = label;
-      updateChips(grid);
-      renderAreas([depto], container);
-    });
-    grid.appendChild(chip);
-  }
-
-  section.appendChild(grid);
-
-  // Auto-seleccionar el primer depto si ninguno está seleccionado
-  if (!selectedDepto) {
-    const first = deptos[0] || comunes[0];
-    if (first) {
-      selectedDepto = first.name;
-      updateChips(grid);
-      renderAreas([first], container);
-    }
-  } else {
-    // Restaurar selección previa
-    const target = allAreas.find(a => a.name === selectedDepto);
-    if (target) renderAreas([target], container);
-    else renderAreas(comunes.length ? comunes : [deptos[0]], container);
-  }
+  document.getElementById('hero-counter').textContent=`${aprobados}/${total}`;
 }
 
-function updateChips(grid) {
-  grid.querySelectorAll('.depto-chip').forEach(chip => {
-    const isComun = chip.querySelector('.depto-chip-num')?.textContent === 'COMÚN';
-    const key     = isComun ? '__comunes__' : chip.dataset.key;
-    chip.classList.toggle('active', key === selectedDepto);
-  });
+/* ═══════════════════════════════════════
+   RENDER GRID
+═══════════════════════════════════════ */
+function isDepto(name){
+  const n=norm(name);
+  // Empieza con "depto" o "departamento", o es solo una letra (A, B, C…)
+  return n.startsWith('depto')||n.startsWith('departamento')||/^[a-g]$/.test(n);
 }
 
-// ── RENDER AREAS ──────────────────────────────────────────────
-function renderAreas(areas, container) {
-  if (!areas.length) {
-    container.innerHTML = '<div class="state-box"><i class="ti ti-inbox" style="font-size:32px;color:#555"></i><span>Sin datos para este departamento.</span></div>';
-    return;
+function renderGrid(){
+  showView('grid');
+  const gc=document.getElementById('grid-content');
+  gc.innerHTML='';
+
+  const deptos=allAreas.filter(a=>isDepto(a.name));
+  const otros =allAreas.filter(a=>!isDepto(a.name));
+
+  if(deptos.length>0){
+    gc.appendChild(makeLabel('Departamentos'));
+    gc.appendChild(makeGrid(deptos));
   }
+  if(otros.length>0){
+    if(deptos.length>0) gc.appendChild(makeLabel('Otros espacios'));
+    gc.appendChild(makeGrid(otros));
+  }
+  const sp=document.createElement('div');sp.className='bottom-spacer';gc.appendChild(sp);
+}
 
-  const list = document.createElement('div');
-  list.className = 'areas-list';
+function makeLabel(txt){
+  const el=document.createElement('div');el.className='section-label';el.textContent=txt;return el;
+}
 
-  for (const area of areas) {
-    const progress   = calcProgress(area.rubros);
-    const totalItems = area.rubros.reduce((s, r) => s + r.items.length, 0);
+function makeGrid(areas){
+  const g=document.createElement('div');g.className='areas-grid';
+  for(const a of areas) g.appendChild(makeAreaCard(a));
+  return g;
+}
 
-    const card = document.createElement('div');
-    card.className = 'area-card';
+function makeAreaCard(area){
+  const style=getAreaStyle(area.name);
+  const {pct}=calcStats(area.rubros);
+  const preview=area.rubros.slice(0,3);
 
-    // Header
-    const header = document.createElement('div');
-    header.className = 'area-card-header';
-    header.innerHTML = `
-      <div style="flex:1">
-        <div class="area-card-title">${area.name}</div>
-        <div class="area-card-meta">${area.rubros.length} rubros · ${totalItems} ítems</div>
+  const card=document.createElement('div');
+  card.className='area-card-grid';
+  card.innerHTML=`
+    <div class="area-card-grid-icon" style="background:${style.bg};color:${style.color}">
+      <i class="ti ${style.icon}"></i>
+    </div>
+    <div class="area-card-grid-name">${area.name}</div>
+    <div class="area-card-grid-meta">${area.rubros.length} rubros</div>
+    <div class="mini-bar-track"><div class="mini-bar-fill" style="width:${pct}%"></div></div>
+    <div class="preview-rubros">
+      ${preview.map(r=>`
+        <div class="preview-rubro-row">
+          <div class="preview-rubro-name">${r.name}</div>
+          <div class="preview-dots">
+            ${r.items.slice(0,4).map(it=>`<div class="pdot" style="background:${DOT_COLORS[it.status]}"></div>`).join('')}
+          </div>
+        </div>`).join('')}
+    </div>
+  `;
+  card.addEventListener('click',()=>openDetail(area));
+  return card;
+}
+
+/* ═══════════════════════════════════════
+   DETALLE
+═══════════════════════════════════════ */
+function openDetail(area){
+  const style=getAreaStyle(area.name);
+  const {pct}=calcStats(area.rubros);
+  const totalItems=area.rubros.reduce((s,r)=>s+r.items.length,0);
+
+  document.getElementById('detail-icon').style.cssText=`background:${style.bg};color:${style.color}`;
+  document.getElementById('detail-icon').innerHTML=`<i class="ti ${style.icon}"></i>`;
+  document.getElementById('detail-name').textContent=area.name;
+  document.getElementById('detail-meta').textContent=`${area.rubros.length} rubros · ${totalItems} ítems`;
+  document.getElementById('detail-bar').style.width=`${pct}%`;
+  document.getElementById('detail-progress-label').textContent=`${pct}% de avance global`;
+  document.getElementById('detail-back-label').textContent=FLOORS[currentFloorId].name;
+
+  const container=document.getElementById('detail-rubros');
+  container.innerHTML='';
+
+  for(const rubro of area.rubros){
+    const rs=getRubroStyle(rubro.name);
+    const block=document.createElement('div');
+    block.className='rubro-block';
+
+    const rh=document.createElement('div');
+    rh.className='rubro-header';
+    rh.innerHTML=`
+      <div class="rubro-icon-wrap" style="background:${rs.bg};color:${rs.color}">
+        <i class="ti ${rs.icon}"></i>
       </div>
-      <i class="ti ti-chevron-down area-chevron"></i>
+      <div class="rubro-name" style="color:${rs.color}">${rubro.name}</div>
     `;
 
-    // Progress
-    const progressEl = document.createElement('div');
-    progressEl.className = 'area-progress';
-    progressEl.innerHTML = `
-      <div class="progress-bar-track"><div class="progress-bar-fill" style="width:${progress}%"></div></div>
-      <div class="progress-label">${progress}% de avance global</div>
-    `;
+    const itemsEl=document.createElement('div');
+    itemsEl.className='items-list';
+    let blockObs='';
 
-    // Rubros
-    const rubrosList = document.createElement('div');
-    rubrosList.className = 'rubros-list';
-
-    for (const rubro of area.rubros) {
-      const style = getRubroStyle(rubro.name);
-      const block = document.createElement('div');
-      block.className = 'rubro-block';
-
-      const rh = document.createElement('div');
-      rh.className = 'rubro-header';
-      rh.innerHTML = `
-        <div class="rubro-icon-wrap" style="background:${style.bg}; color:${style.color}">
-          <i class="ti ${style.icon}"></i>
+    for(const item of rubro.items){
+      const row=document.createElement('div');
+      row.className='item-row';
+      row.innerHTML=`
+        <div class="item-name">${item.name}</div>
+        <div class="status-pill ${getStatusClass(item.status)}">
+          <div class="dot"></div>${STATUS_LABELS[item.status]}
         </div>
-        <div class="rubro-name" style="color:${style.color}">${rubro.name}</div>
       `;
-
-      const itemsEl = document.createElement('div');
-      itemsEl.className = 'items-list';
-
-      let blockObs = '';
-      for (const item of rubro.items) {
-        const sc  = getStatusClass(item.status);
-        const row = document.createElement('div');
-        row.className = 'item-row';
-        row.innerHTML = `
-          <div class="item-name">${item.name}</div>
-          <div class="status-pill ${sc}"><div class="dot"></div>${STATUS_LABELS[item.status]}</div>
-        `;
-        itemsEl.appendChild(row);
-        if (item.obs && item.obs.trim()) blockObs = item.obs.trim();
-      }
-
-      block.appendChild(rh);
-      block.appendChild(itemsEl);
-
-      if (blockObs) {
-        const obsEl = document.createElement('div');
-        obsEl.className = 'obs-block';
-        obsEl.innerHTML = `<div class="obs-label">Observación</div><div class="obs-text">${blockObs}</div>`;
-        block.appendChild(obsEl);
-      }
-
-      rubrosList.appendChild(block);
+      itemsEl.appendChild(row);
+      if(item.obs&&item.obs.trim()) blockObs=item.obs.trim();
     }
 
-    card.appendChild(header);
-    card.appendChild(progressEl);
-    card.appendChild(rubrosList);
+    block.appendChild(rh);
+    block.appendChild(itemsEl);
 
-    header.addEventListener('click', () => card.classList.toggle('open'));
-
-    list.appendChild(card);
+    if(blockObs){
+      const obs=document.createElement('div');
+      obs.className='obs-block';
+      obs.innerHTML=`<div class="obs-label">Observación</div><div class="obs-text">${blockObs}</div>`;
+      block.appendChild(obs);
+    }
+    container.appendChild(block);
   }
 
-  container.innerHTML = '';
-  container.appendChild(list);
+  showView('detail');
 }
 
-// ── BOOT ──────────────────────────────────────────────────────
-if (checkAuth()) {
-  document.getElementById('login-screen').style.display = 'none';
-  document.getElementById('app').style.display = 'block';
+document.getElementById('detail-back-btn').addEventListener('click',()=>showView('grid'));
+
+/* ═══════════════════════════════════════
+   SWITCH VIEW
+═══════════════════════════════════════ */
+function showView(v){
+  document.getElementById('grid-view').style.display  =v==='grid'  ?'block':'none';
+  document.getElementById('detail-view').style.display=v==='detail'?'flex' :'none';
+  window.scrollTo(0,0);
+}
+
+/* ═══════════════════════════════════════
+   BOOT
+═══════════════════════════════════════ */
+if(checkAuth()){
+  document.getElementById('login-screen').style.display='none';
+  document.getElementById('app').style.display='block';
   initApp();
 }
 </script>
